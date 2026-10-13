@@ -44,6 +44,10 @@
 - Causa dos `ComeÃ§ar`/`ðŸ"¥`: fontes em `src/screens/` continham UTF-8 com dupla/tripla codificação (bytes UTF-8 lidos como latin1 e como windows-1252, recodificados). Corrigido com script de reversão (só troca o que decodifica em UTF-8 válido e diferente; `é/—/…/🔒` legítimos são pontos fixos). 94 trechos em 5 telas; bundle verificado em bytes (`ç`=c3a7, sem `c383`, 🔥 presente). Testes 36/36, tsc/eslint limpos.
 - Mídia: 7 imagens geradas por IA (Gemini) a partir de prompts do usuário, uso declarado pelo usuário — creditadas honestamente como IA (NÃO como foto própria). Integradas: flexão (par topo/fundo), agachamento (par em pé/embaixo), prancha (única, preenche placeholder), escalador e pike (únicas, substituem fotos). Arquivos substituídos preservados em `_inbox/own/` + git, fora do build. NÃO incluídos com motivo: remada 1/2 (mostram pessoa deitada, sem barra), par abdominal (sem exercício no catálogo de 40 — teste trava a contagem), `capahome.png` (2,1 MB), arquivos ≥1,6 MB redundantes.
 
+## 2026-10-13 — Série numerada 01–16 (cobertura 6→14 de 40)
+
+- Publicado estava em dia (git limpo, Pages no commit verificado). 10 imagens da série integradas após inspeção visual (SHA-256 + tipo real): lateral, hollow, joelhos na barra, escalador (substitui `escalador.jpg`), L-sit, flexões joelhos/diamante/inclinada, búlgaro, afundo (ilustra `reverse-lunge`). NÃO incluídas: `05` (deitado vs pendurado), `06` (duplicata da 02), `08` (prancha alta vs antebraços), `11`/`14` (sem exercício), `13` (redundante com par animado), nomes não-identificáveis (aguardam nome do exercício), colagem 1,8 MB.
+
 ## 2026-10-13 — Parte B: diagnóstico do bug da tela /execucao
 
 - Causa: `ExerciseMedia` renderizava `<img>` sem `onError`; com `frames` apontando para arquivos ainda não baixados (429), o navegador exibia o glifo de imagem quebrada sobre o fundo preto, e o botão Pausar aparecia porque o ramo de animação só checava o array, não o carregamento.

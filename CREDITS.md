@@ -98,12 +98,38 @@ pessoa deitada no chão, sem barra — não demonstram a remada), par abdominal
 | `aagachamentoempé.jpg` → `agachamento-pe.jpg` | bodyweight-squat (em pé) | `6beb9fe0…4a48a0` | 44766 |
 | `agachamentoembaixo.jpg` → `agachamento-fundo.jpg` | bodyweight-squat (embaixo) | `caef49a0…d0b7` | 50490 |
 | `pranchaabdominsl1.jpg` → `prancha.jpg` | plank (única) | `0c58f15c…f56b2` | 53429 |
-| `…(3).jpg` → `escalador.jpg` | mountain-climbers (única) | `f5c4e6da…4e9eb` | 54713 |
+| `…(3).jpg` → `escalador.jpg` | mountain-climbers — SUBSTITUÍDA em 13/10 (série 04) | `f5c4e6da…4e9eb` | 54713 |
 | `…(6).jpg` → `flexao-pike.jpg` | pike-pushup (única) | `7fa7cc88…6f988` | 54032 |
 
 Cobertura após a troca: **6 de 40** (flexão, agachamento, prancha, escalador,
 pike + capa). Prancha e o par da flexão/agachamento agora no estilo IA
 coerente; fotos próprias anteriores preservadas em `_inbox/own/`.
+
+## Série numerada 01–16 (13/10)
+
+Mesma origem/procedência da seção anterior (IA Gemini a pedido do usuário).
+Inspeção visual uma por uma; incluídas 10 (bytes idênticos, SHA-256
+verificado). NÃO incluídas: `05` (pernas DEITADO — catálogo tem pendurado na
+barra), `06` (quase duplicata da `02`), `08` (prancha ALTA — catálogo tem
+prancha de antebraços), `11` (declinada — sem exercício), `13` (redundante com
+o par animado do agachamento), `14` (sumo — sem exercício), nomes
+não-identificáveis (`eGoLe/qhZv8/wsEeD/Captura…` — aguardando nome do
+exercício), `Grade…Neon Azul.png` (colagem 1,8 MB).
+
+| Arquivo `_inbox/` → local | Exercício | SHA-256 | Bytes |
+|---|---|---|---|
+| `01_prancha_lateral.png` → `prancha-lateral.png` | side-plank (única) | `d29e0fd5…e6b5` | 110787 |
+| `02_hollow_hold_corpo_oco.png` → `hollow.png` | hollow-hold (única) | `b9e34130…d7bb1` | 100235 |
+| `03_elevacao_de_joelhos_na_barra.png` → `joelhos-barra.png` | knee-raises (única) | `39cc4d85…0293` | 95855 |
+| `04_escalador_mountain_climber.png` → `escalador.png` | mountain-climbers (única, substitui `escalador.jpg`) | `bc8fdb62…cc6f` | 111461 |
+| `07_l_sit_nas_paralelas.png` → `l-sit.png` | l-sit (única) | `1a83c49d…8994` | 93262 |
+| `09_flexao_joelhos_flexionados.png` → `flexao-joelhos.png` | knee-pushup (única) | `78788105…762e` | 104450 |
+| `10_flexao_diamante.png` → `flexao-diamante.png` | diamond-pushup (única) | `da535afc…41bb` | 101584 |
+| `12_flexao_inclinada_no_banco.png` → `flexao-inclinada.png` | incline-pushup (única) | `71b60cdd…b682` | 93382 |
+| `15_agachamento_bulgaro.png` → `bulgaro.png` | bulgarian-split (única) | `f72e7cf5…0958` | 113207 |
+| `16_afundo_avanco.png` → `afundo.png` | reverse-lunge (única; afundo frontal ilustrando a família) | `a62bec50…ddb36` | 110491 |
+
+Cobertura atual: **14 de 40** exercícios com demonstração.
 
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).
