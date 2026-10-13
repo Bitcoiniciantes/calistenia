@@ -6,7 +6,7 @@ import type { Repository } from '../repo/Repository'
 import type { Session } from '../repo/types'
 import { calcStreak } from '../repo/training'
 
-/** Hoje: treino do dia, streak e semana em calendÃ¡rio. */
+/** Hoje: treino do dia, streak e semana em calendário. */
 export function Hoje({ repo }: { repo: Repository }) {
   const [streak, setStreak] = useState(0)
   const [week, setWeek] = useState<{ label: string; trained: boolean }[]>([])
@@ -24,7 +24,7 @@ export function Hoje({ repo }: { repo: Repository }) {
           ? profile.activeProgramId
           : 'iniciante-3d'
       setProgramId(pid)
-      // Rotaciona as sessÃµes pelo dia do ano (efeito, nÃ£o render).
+      // Rotaciona as sessões pelo dia do ano (efeito, não render).
       const prog = programById[pid]!
       const dayOfYear = Math.floor(
         (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) /
@@ -54,7 +54,7 @@ export function Hoje({ repo }: { repo: Repository }) {
     <div className="app-shell gap-4 p-4">
       <div className="flex items-baseline justify-between">
         <h1 className="text-xl font-bold">Hoje</h1>
-        <span data-testid="streak">ðŸ”¥ {streak}</span>
+        <span data-testid="streak">🔥 {streak}</span>
       </div>
       <div className="flex gap-1" aria-label="Semana">
         {week.map((d, i) => (
@@ -75,13 +75,13 @@ export function Hoje({ repo }: { repo: Repository }) {
           className="mb-3 w-full rounded object-cover"
         />
         <p className="text-sm opacity-70">{program.namePt}</p>
-        <p className="font-medium">{session?.title ?? 'Carregandoâ€¦'}</p>
+        <p className="font-medium">{session?.title ?? 'Carregando…'}</p>
         {session && (
           <Link
             to={`/execucao/${session.id}`}
             className="touch-target mt-3 flex items-center justify-center rounded bg-green-700 px-4 font-bold text-white"
           >
-            ComeÃ§ar
+            Começar
           </Link>
         )}
       </div>

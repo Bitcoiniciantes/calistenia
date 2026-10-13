@@ -66,17 +66,44 @@ aos incluídos em `/public/media`):
 
 | Arquivo | Exercício/uso | SHA-256 | Bytes |
 |---|---|---|---|
-| `own/pushup-1.jpg` | pushup (início) | `6e4ac452…49e7f` | 25022 |
-| `own/pushup-2.jpg` | pushup (fim) | `b78664a0…6fca3` | 36303 |
-| `own/squat-1.jpg` | bodyweight-squat (início) | `1833df56…eb6dc` | 35043 |
-| `own/squat-2.jpg` | bodyweight-squat (fim) | `a1f113b5…616f0` | 30427 |
-| `own/climbers.jpg` | mountain-climbers (única) | `6aafaa80…4564ed6` | 38496 |
-| `own/pike.jpg` | pike-pushup (única) | `75488eb2…406006` | 37868 |
+| `own/pushup-1.jpg` | pushup (início) — SUBSTITUÍDA em 13/10 | `6e4ac452…49e7f` | 25022 |
+| `own/pushup-2.jpg` | pushup (fim) — SUBSTITUÍDA em 13/10 | `b78664a0…6fca3` | 36303 |
+| `own/squat-1.jpg` | bodyweight-squat (início) — SUBSTITUÍDA em 13/10 | `1833df56…eb6dc` | 35043 |
+| `own/squat-2.jpg` | bodyweight-squat (fim) — SUBSTITUÍDA em 13/10 | `a1f113b5…616f0` | 30427 |
+| `own/climbers.jpg` | mountain-climbers — SUBSTITUÍDA em 13/10 | `6aafaa80…4564ed6` | 38496 |
+| `own/pike.jpg` | pike-pushup — SUBSTITUÍDA em 13/10 | `75488eb2…406006` | 37868 |
 | `own/capahome.jpg` | capa da tela Hoje | `f78d1142…69bd3` | 56331 |
 
 Cobertura atual: **6 de 40** exercícios com demonstração (remada = par Commons
 removido pelo usuário; flexão, agachamento, escalador e pike = fotos próprias;
 prancha = placeholder até nova entrega). Ver `GUIA_DE_GRAVACAO.md`.
+
+## Imagens geradas por IA a pedido do usuário (`_inbox/`, 13/10)
+
+Renderizações geradas por IA (Gemini) a partir de prompts do usuário; uso no
+app declarado pelo usuário em 13/10/2026. Incluídas SEM modificação (bytes
+idênticos), via `sync-media:local` com SHA-256 verificado. Inspeção visual:
+exercício correto em cada arquivo; pares topo/fundo coerentes (flexão,
+agachamento). Arquivos substituídos seguem preservados em `_inbox/own/` e no
+git (fora do build). NÃO incluídos: `remadainvertidanochao1/2.jpg` (mostram
+pessoa deitada no chão, sem barra — não demonstram a remada), par abdominal
+(`(4)`/`(5)` — sem exercício correspondente no catálogo de 40), `capahome.png`
+(2,1 MB, acima do orçamento), arquivos ≥1,6 MB (`(1)`, `(2)`, base, `4i4z`,
+`.svg` — redundantes com o par reduzido).
+
+| Arquivo `_inbox/` → local | Exercício | SHA-256 | Bytes |
+|---|---|---|---|
+| `flexaoemcima (2).jpg` → `flexao-topo.jpg` | pushup (topo) | `9ebfd100…12edaa` | 51556 |
+| `flexaomeio.jpg` → `flexao-fundo.jpg` | pushup (fundo) | `e20f96da…6800` | 35100 |
+| `aagachamentoempé.jpg` → `agachamento-pe.jpg` | bodyweight-squat (em pé) | `6beb9fe0…4a48a0` | 44766 |
+| `agachamentoembaixo.jpg` → `agachamento-fundo.jpg` | bodyweight-squat (embaixo) | `caef49a0…d0b7` | 50490 |
+| `pranchaabdominsl1.jpg` → `prancha.jpg` | plank (única) | `0c58f15c…f56b2` | 53429 |
+| `…(3).jpg` → `escalador.jpg` | mountain-climbers (única) | `f5c4e6da…4e9eb` | 54713 |
+| `…(6).jpg` → `flexao-pike.jpg` | pike-pushup (única) | `7fa7cc88…6f988` | 54032 |
+
+Cobertura após a troca: **6 de 40** (flexão, agachamento, prancha, escalador,
+pike + capa). Prancha e o par da flexão/agachamento agora no estilo IA
+coerente; fotos próprias anteriores preservadas em `_inbox/own/`.
 
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).

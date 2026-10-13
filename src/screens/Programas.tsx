@@ -16,7 +16,7 @@ export function Programas() {
             <Link to={`/programas/${p.id}`} className="block">
               <p className="font-medium">{p.namePt}</p>
               <p className="text-sm opacity-70">
-                {p.sessions.length} sessÃµes Â· {p.daysPerWeek}d/sem
+                {p.sessions.length} sessões · {p.daysPerWeek}d/sem
               </p>
             </Link>
           </li>
@@ -47,7 +47,7 @@ export function DetalhePrograma({ repo }: { repo: Repository }) {
   if (!program) {
     return (
       <div className="app-shell gap-4 p-4">
-        <p>Programa nÃ£o encontrado.</p>
+        <p>Programa não encontrado.</p>
         <Link to="/programas" className="underline">
           Voltar
         </Link>
@@ -74,12 +74,12 @@ export function DetalhePrograma({ repo }: { repo: Repository }) {
   return (
     <div className="app-shell gap-3 p-4">
       <Link to="/programas" className="touch-target text-sm underline">
-        â† Programas
+        ← Programas
       </Link>
       <h1 className="text-xl font-bold">{program.namePt}</h1>
       {isChallenge && (
         <p className="text-sm font-medium" data-testid="challenge-progress">
-          {doneCount} de 28 exercÃ­cios
+          {doneCount} de 28 exercícios
         </p>
       )}
       <button
@@ -97,12 +97,12 @@ export function DetalhePrograma({ repo }: { repo: Repository }) {
           return (
             <li key={s.id} className="rounded border p-3">
               <p className="font-medium">
-                {s.title} {done ? 'âœ“' : ''} {locked ? 'ðŸ”’' : ''}
+                {s.title} {done ? '✓' : ''} {locked ? '🔒' : ''}
               </p>
               <ul className="text-sm opacity-80">
                 {s.items.map((item) => (
                   <li key={item.exerciseId}>
-                    {exerciseById[item.exerciseId]?.namePt ?? item.exerciseId} Â·{' '}
+                    {exerciseById[item.exerciseId]?.namePt ?? item.exerciseId} ·{' '}
                     {item.sets}x{item.reps ?? `${item.holdSec}s`}
                   </li>
                 ))}

@@ -138,8 +138,8 @@
       "attribution": "Autoria própria do usuário (declarada em 13/10/2026)",
       "sha256": "6e4ac452c31f16ca7c9b1dae32a252bd66fb42665aff56acaa643ec502849e7f",
       "bytes": 25022,
-      "approved": true,
-      "reason": "midia-propria-verificada"
+      "approved": false,
+      "reason": "substituida-novo-par-ia-13/10"
     },
     {
       "path": "own/pushup-2.jpg",
@@ -153,8 +153,8 @@
       "attribution": "Autoria própria do usuário (declarada em 13/10/2026)",
       "sha256": "b78664a0850cb415a50eca908e1cb9d7c41fa5dda327a1c3f7be907f0db6fca3",
       "bytes": 36303,
-      "approved": true,
-      "reason": "midia-propria-verificada"
+      "approved": false,
+      "reason": "substituida-novo-par-ia-13/10"
     },
     {
       "path": "own/squat-1.jpg",
@@ -168,8 +168,8 @@
       "attribution": "Autoria própria do usuário (declarada em 13/10/2026)",
       "sha256": "1833df56451d25a08eae342aa9dcac75bf33afbf5b82bd430dda9b23314eb6dc",
       "bytes": 35043,
-      "approved": true,
-      "reason": "midia-propria-verificada"
+      "approved": false,
+      "reason": "substituida-novo-par-ia-13/10"
     },
     {
       "path": "own/squat-2.jpg",
@@ -183,8 +183,8 @@
       "attribution": "Autoria própria do usuário (declarada em 13/10/2026)",
       "sha256": "a1f113b536d9283e1df86e8081ac2b09644ceefb32c63550f82b5d57631616f0",
       "bytes": 30427,
-      "approved": true,
-      "reason": "midia-propria-verificada"
+      "approved": false,
+      "reason": "substituida-novo-par-ia-13/10"
     },
     {
       "path": "own/climbers.jpg",
@@ -198,8 +198,8 @@
       "attribution": "Autoria própria do usuário (declarada em 13/10/2026)",
       "sha256": "6aafaa809ea4dc07da64726885a00cc8a9f1b148f3d16a64e5c4ea02c4564ed6",
       "bytes": 38496,
-      "approved": true,
-      "reason": "midia-propria-verificada"
+      "approved": false,
+      "reason": "substituida-novo-par-ia-13/10"
     },
     {
       "path": "own/pike.jpg",
@@ -213,8 +213,8 @@
       "attribution": "Autoria própria do usuário (declarada em 13/10/2026)",
       "sha256": "75488eb2ea2e999d1f384a545f33ca3a1ac93cf8f0e7c5625d2048e613406006",
       "bytes": 37868,
-      "approved": true,
-      "reason": "midia-propria-verificada"
+      "approved": false,
+      "reason": "substituida-novo-par-ia-13/10"
     },
     {
       "path": "own/capahome.jpg",
@@ -230,6 +230,111 @@
       "bytes": 56331,
       "approved": true,
       "reason": "midia-propria-verificada"
+    },
+    {
+      "path": "flexaoemcima (2).jpg",
+      "local": "flexao-topo.jpg",
+      "inbox": "flexaoemcima (2).jpg",
+      "exerciseId": "pushup",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "9ebfd1007340ba2019d253f4584483fe0c6ec90ef19f3c2ae63a3e2bf912edaa",
+      "bytes": 51556,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "flexaomeio.jpg",
+      "local": "flexao-fundo.jpg",
+      "inbox": "flexaomeio.jpg",
+      "exerciseId": "pushup",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "e20f96da4bd41de28c7bd479f30df131b17caeda59a0ea65cc05d7719dde6800",
+      "bytes": 35100,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "aagachamentoempé.jpg",
+      "local": "agachamento-pe.jpg",
+      "inbox": "aagachamentoempé.jpg",
+      "exerciseId": "bodyweight-squat",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "6beb9fe0dd22cc01ec87f222c2299516d816ba01e50d800c812d2e0f234a48a0",
+      "bytes": 44766,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "agachamentoembaixo.jpg",
+      "local": "agachamento-fundo.jpg",
+      "inbox": "agachamentoembaixo.jpg",
+      "exerciseId": "bodyweight-squat",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "caef49a05a1f7da19f3b8f0e8f19055e8710178f8cf0b6a0dc3939f14b6ad0b7",
+      "bytes": 50490,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "pranchaabdominsl1.jpg",
+      "local": "prancha.jpg",
+      "inbox": "pranchaabdominsl1.jpg",
+      "exerciseId": "plank",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "0c58f15cc8a98b5cba1ba9a1a99cfa2c9018e08ed86abc06985beb017c9f56b2",
+      "bytes": 53429,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "Gemini_Generated_Image_ctt282ctt282ctt2 (3).jpg",
+      "local": "escalador.jpg",
+      "inbox": "Gemini_Generated_Image_ctt282ctt282ctt2 (3).jpg",
+      "exerciseId": "mountain-climbers",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "f5c4e6da9a536bd9ba7dff3dbb3fb8c2215655c7c8ec5ea1e3991e2b08a4e9eb",
+      "bytes": 54713,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "Gemini_Generated_Image_ctt282ctt282ctt2 (6).jpg",
+      "local": "flexao-pike.jpg",
+      "inbox": "Gemini_Generated_Image_ctt282ctt282ctt2 (6).jpg",
+      "exerciseId": "pike-pushup",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "7fa7cc8813e42d4b2c0defb94782d8899743decc6cfe8c8cad492ebafeb6f988",
+      "bytes": 54032,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
     }
   ]
 }

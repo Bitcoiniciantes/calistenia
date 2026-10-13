@@ -56,7 +56,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   const [soundOn, setSoundOn] = useState(true)
   const wasResting = useRef(false)
 
-  // Wake Lock: tela nÃ£o apaga durante o treino (quando suportado).
+  // Wake Lock: tela não apaga durante o treino (quando suportado).
   useEffect(() => {
     let lock: { release?: () => void } | undefined
     const nav = navigator as Navigator & {
@@ -71,7 +71,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     return () => lock?.release?.()
   }, [])
 
-  // Carrega sessÃ£o salva: oferece retomar. TambÃ©m lÃª preferÃªncia de som.
+  // Carrega sessão salva: oferece retomar. Também lê preferência de som.
   useEffect(() => {
     let cancelled = false
     void repo.getActiveSession().then((stored) => {
@@ -94,7 +94,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     }
   }, [repo, session])
 
-  // Persiste a cada mudanÃ§a (sobrevive a fechar/recarregar).
+  // Persiste a cada mudança (sobrevive a fechar/recarregar).
   useEffect(() => {
     if (active && !done) void repo.saveActiveSession(active)
   }, [active, done, repo])
@@ -112,7 +112,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   const restMs = active ? restRemainingMs(active, now) : 0
   const resting = restMs > 0 && !finished
 
-  // Fim do descanso: bipe (se ativado) + vibraÃ§Ã£o. Som Ã© opcional.
+  // Fim do descanso: bipe (se ativado) + vibração. Som é opcional.
   useEffect(() => {
     if (wasResting.current && !resting && !finished) {
       if (soundOn) beep()
@@ -120,7 +120,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
         try {
           navigator.vibrate(200)
         } catch {
-          /* sem vibraÃ§Ã£o */
+          /* sem vibração */
         }
       }
     }
@@ -170,7 +170,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
           try {
             navigator.vibrate(200)
           } catch {
-            /* sem vibraÃ§Ã£o */
+            /* sem vibração */
           }
         }
       }
@@ -179,7 +179,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     })
   }, [repo, session])
 
-  // Timer do hold: contagem regressiva; ao zerar, conclui a sÃ©rie.
+  // Timer do hold: contagem regressiva; ao zerar, conclui a série.
   useEffect(() => {
     if (holdLeft === null || holdLeft <= 0) return
     if (resting) return
@@ -204,8 +204,8 @@ export function RunScreen({ session, repo }: RunScreenProps) {
       <div className="app-shell items-center justify-center gap-4 p-6 text-center">
         <h1 className="text-xl font-bold">Retomar treino?</h1>
         <p className="text-sm">
-          ExercÃ­cio {resumeOffer.currentItemIndex + 1} de {session.items.length},
-          sÃ©rie {resumeOffer.currentSet}.
+          Exercício {resumeOffer.currentItemIndex + 1} de {session.items.length},
+          série {resumeOffer.currentSet}.
         </p>
         <button
           type="button"
@@ -225,7 +225,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             setResumeOffer(null)
           }}
         >
-          RecomeÃ§ar
+          Recomeçar
         </button>
       </div>
     )
@@ -238,13 +238,13 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     )
     return (
       <div className="app-shell items-center justify-center gap-4 p-6 text-center">
-        <h1 className="text-xl font-bold">Treino concluÃ­do!</h1>
-        <p className="text-sm">{totalSets ?? 0} sÃ©ries registradas no histÃ³rico local.</p>
+        <h1 className="text-xl font-bold">Treino concluído!</h1>
+        <p className="text-sm">{totalSets ?? 0} séries registradas no histórico local.</p>
         <Link
           to="/"
           className="touch-target flex w-full items-center justify-center rounded bg-green-700 px-4 font-bold text-white"
         >
-          Voltar ao inÃ­cio
+          Voltar ao início
         </Link>
       </div>
     )
@@ -253,7 +253,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   if (!active || !item || !exercise) {
     return (
       <div className="app-shell items-center justify-center p-6">
-        <p>Carregando treinoâ€¦</p>
+        <p>Carregando treino…</p>
       </div>
     )
   }
@@ -270,7 +270,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
       <div className="run-media">
         <ExerciseMedia
           frames={exercise.media.frames}
-          alt={`DemonstraÃ§Ã£o de ${exercise.namePt}`}
+          alt={`Demonstração de ${exercise.namePt}`}
           exerciseName={exercise.namePt}
           cues={exercise.cues}
         />
@@ -280,7 +280,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
         <div className="flex items-baseline justify-between">
           <h1 className="text-lg font-bold">{exercise.namePt}</h1>
           <span className="text-sm opacity-70">
-            {active.currentItemIndex + 1}/{session.items.length} Â· SÃ©rie{' '}
+            {active.currentItemIndex + 1}/{session.items.length} · Série{' '}
             {active.currentSet}/{item.sets}
           </span>
         </div>
@@ -300,7 +300,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
               {formatCountdown(restMs)}
             </p>
             <p className="text-xs opacity-70">
-              PrÃ³ximo: {nextPreview ?? 'prÃ³xima sÃ©rie'}
+              Próximo: {nextPreview ?? 'próxima série'}
             </p>
             <button
               type="button"
@@ -327,7 +327,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
               className="touch-target flex-1 rounded bg-green-700 px-4 text-lg font-bold text-white"
               onClick={() => setHoldLeft(item.holdSec ?? 30)}
             >
-              {holdLeft === null ? `Iniciar ${item.holdSec ?? 0}s` : `${holdLeft}sâ€¦`}
+              {holdLeft === null ? `Iniciar ${item.holdSec ?? 0}s` : `${holdLeft}s…`}
             </button>
             {holdLeft !== null && (
               <button
@@ -345,7 +345,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             className="touch-target w-full rounded bg-green-700 px-4 text-lg font-bold text-white"
             onClick={handleComplete}
           >
-            ConcluÃ­ a sÃ©rie
+            Concluí a série
           </button>
         )}
 
@@ -353,24 +353,24 @@ export function RunScreen({ session, repo }: RunScreenProps) {
           <button
             type="button"
             disabled={!easier}
-            title={easier ? `Trocar por ${easier.namePt}` : 'Sem regressÃ£o: jÃ¡ Ã© o mais fÃ¡cil'}
+            title={easier ? `Trocar por ${easier.namePt}` : 'Sem regressão: já é o mais fácil'}
             className="touch-target flex-1 rounded border px-2 text-sm disabled:opacity-40"
             onClick={() =>
               easier && setActive((p) => (p ? substitute(p, session, easier.id) : p))
             }
           >
-            {easier ? `Mais fÃ¡cil: ${easier.namePt}` : 'Mais fÃ¡cil (jÃ¡ Ã© o mais fÃ¡cil)'}
+            {easier ? `Mais fácil: ${easier.namePt}` : 'Mais fácil (já é o mais fácil)'}
           </button>
           <button
             type="button"
             disabled={!harder}
-            title={harder ? `Trocar por ${harder.namePt}` : 'Sem progressÃ£o: jÃ¡ Ã© o mais difÃ­cil'}
+            title={harder ? `Trocar por ${harder.namePt}` : 'Sem progressão: já é o mais difícil'}
             className="touch-target flex-1 rounded border px-2 text-sm disabled:opacity-40"
             onClick={() =>
               harder && setActive((p) => (p ? substitute(p, session, harder.id) : p))
             }
           >
-            {harder ? `Mais difÃ­cil: ${harder.namePt}` : 'Mais difÃ­cil (jÃ¡ Ã© o mais difÃ­cil)'}
+            {harder ? `Mais difícil: ${harder.namePt}` : 'Mais difícil (já é o mais difícil)'}
           </button>
           <button
             type="button"
@@ -380,7 +380,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
                 if (!p) return p
                 const n = skipItem(p, session)
                 if (isFinished(n, session)) {
-                  // Pular atÃ© o fim tambÃ©m registra o histÃ³rico (sÃ©ries nÃ£o feitas).
+                  // Pular até o fim também registra o histórico (séries não feitas).
                   const durationSec = Math.max(
                     0,
                     Math.round((Date.now() - Date.parse(n.startedAt)) / 1000),
@@ -421,7 +421,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
           </ul>
         </details>
         <Link to="/ajustes" className="touch-target text-xs underline opacity-70">
-          CrÃ©ditos de mÃ­dia
+          Créditos de mídia
         </Link>
       </div>
     </div>

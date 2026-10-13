@@ -9,10 +9,10 @@ const EQUIPMENT = [
   { id: 'bar', label: 'Barra' },
   { id: 'parallettes', label: 'Paralelas' },
   { id: 'rings', label: 'Argolas' },
-  { id: 'bands', label: 'ElÃ¡sticos' },
+  { id: 'bands', label: 'Elásticos' },
 ]
 
-/** Onboarding em 3 passos (~1 min), com aviso de seguranÃ§a. */
+/** Onboarding em 3 passos (~1 min), com aviso de segurança. */
 export function Onboarding({ repo }: { repo: Repository }) {
   const navigate = useNavigate()
   const [step, setStep] = useState(1)
@@ -47,14 +47,14 @@ export function Onboarding({ repo }: { repo: Repository }) {
 
   return (
     <div className="app-shell gap-4 p-4">
-      <h1 className="text-xl font-bold">ComeÃ§ar ({step}/3)</h1>
+      <h1 className="text-xl font-bold">Começar ({step}/3)</h1>
 
       {step === 1 && (
         <section className="flex flex-col gap-3" aria-label="Mini-teste">
-          <p className="text-sm">Quantas repetiÃ§Ãµes vocÃª consegue fazer?</p>
+          <p className="text-sm">Quantas repetições você consegue fazer?</p>
           {(
             [
-              ['FlexÃµes', pushups, setPushups, 50],
+              ['Flexões', pushups, setPushups, 50],
               ['Barras', pullups, setPullups, 20],
               ['Agachamentos', squats, setSquats, 50],
             ] as const
@@ -86,7 +86,7 @@ export function Onboarding({ repo }: { repo: Repository }) {
 
       {step === 2 && (
         <section className="flex flex-col gap-3" aria-label="Equipamento e rotina">
-          <p className="text-sm font-bold">Equipamento disponÃ­vel:</p>
+          <p className="text-sm font-bold">Equipamento disponível:</p>
           {EQUIPMENT.map((e) => (
             <label key={e.id} className="touch-target flex items-center gap-2 text-sm">
               <input
@@ -115,7 +115,7 @@ export function Onboarding({ repo }: { repo: Repository }) {
               onChange={(e) => setGoal(e.target.value)}
               className="touch-target rounded border px-2"
             >
-              <option value="strength">ForÃ§a</option>
+              <option value="strength">Força</option>
               <option value="muscle">Massa muscular</option>
               <option value="skills">Skills</option>
               <option value="fatloss">Gordura corporal</option>
@@ -123,17 +123,17 @@ export function Onboarding({ repo }: { repo: Repository }) {
           </label>
           {!equipment.includes('bar') && (
             <p className="rounded border p-2 text-sm">
-              Sem barra, os exercÃ­cios de puxar ficam limitados â€” o app mostra o
-              desequilÃ­brio no volume semanal.
+              Sem barra, os exercícios de puxar ficam limitados — o app mostra o
+              desequilíbrio no volume semanal.
             </p>
           )}
         </section>
       )}
 
       {step === 3 && (
-        <section className="flex flex-col gap-3" aria-label="SeguranÃ§a e programa">
+        <section className="flex flex-col gap-3" aria-label="Segurança e programa">
           <p className="rounded border p-3 text-sm" role="note">
-            Aviso de seguranÃ§a: em caso de dor, lesÃ£o ou condiÃ§Ã£o mÃ©dica,
+            Aviso de segurança: em caso de dor, lesão ou condição médica,
             consulte um profissional antes de treinar.
           </p>
           <p className="text-sm">
@@ -166,7 +166,7 @@ export function Onboarding({ repo }: { repo: Repository }) {
             onClick={() => void finish()}
             className="touch-target flex-1 rounded bg-green-700 px-4 font-bold text-white"
           >
-            Salvar e comeÃ§ar
+            Salvar e começar
           </button>
         )}
       </div>

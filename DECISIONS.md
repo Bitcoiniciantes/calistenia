@@ -33,6 +33,12 @@
 - Privacidade: hosts requisitados em produção = só o próprio host (0 trackers, 0 externas). Axe (wcag2aa) zerado nas 4 telas após trocar botões para green-700 (contraste) + `:focus-visible`; teclado nativo em tudo.
 - Validação final: 36/36 Vitest, ESLint/tsc/build verdes; precache 482,7 KiB (< 25 MB); Lighthouse 13.5.0 Performance 98 mobile; fluxos e2e provados por partes (harness lento impede 1 passada limpa: onboarding, série/descanso, retomada, conclusão, histórico c/ duração, offline).
 
+## 2026-10-13 — Publicação GitHub Pages (main/docs, Fase 5)
+
+- Repo estava vazio (sem branches): por isso o Pages não ativava. Push inicial `main` (source + `docs/` com build) liberou a ativação.
+- Deploy: branch `main`, pasta `/docs` (build `outDir: docs`), sem Actions. `base: /calistenia/`, `HashRouter` (sem 404 em links profundos), manifest `start_url`/`scope` com base, precache 22 entradas/716 KiB com as 7 fotos próprias. Encontrou-se e corrigiu-se: `globPatterns` sem jpg (mídia fora do precache) e 2 chaves quebradas por edição (`icons: [` sem `{`, `//` engolindo linha).
+- Servido errado (index de src) até rebuild do Pages; após rebuild: URL https://bitcoiniciantes.github.io/calistenia/ com build correto. Lighthouse na URL: Performance 93 mobile. Manifest/SW/instalabilidade pendentes de confirmação em dispositivo real.
+
 ## 2026-10-13 — Parte B: diagnóstico do bug da tela /execucao
 
 - Causa: `ExerciseMedia` renderizava `<img>` sem `onError`; com `frames` apontando para arquivos ainda não baixados (429), o navegador exibia o glifo de imagem quebrada sobre o fundo preto, e o botão Pausar aparecia porque o ramo de animação só checava o array, não o carregamento.
