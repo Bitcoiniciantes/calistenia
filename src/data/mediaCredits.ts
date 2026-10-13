@@ -44,7 +44,7 @@ export const mediaCredits: MediaCredit[] = [
   card('handstand-wall', 'foto-handstand.png'),
   {
     exerciseId: 'mountain-climbers',
-    file: 'escalador.jpg',
+    file: 'escalador-700.png',
     pageUrl: '',
     author: AI,
     license: AI_LICENSE,
@@ -53,7 +53,7 @@ export const mediaCredits: MediaCredit[] = [
   },
   {
     exerciseId: 'hollow-hold',
-    file: 'hollow.png',
+    file: 'hollow-700.png',
     pageUrl: '',
     author: AI,
     license: AI_LICENSE,
@@ -62,7 +62,7 @@ export const mediaCredits: MediaCredit[] = [
   },
   {
     exerciseId: 'knee-raises',
-    file: 'joelhos-barra.png',
+    file: 'joelhos-barra-700.png',
     pageUrl: '',
     author: AI,
     license: AI_LICENSE,
@@ -71,7 +71,7 @@ export const mediaCredits: MediaCredit[] = [
   },
   {
     exerciseId: 'l-sit',
-    file: 'l-sit.png',
+    file: 'lsit-700.png',
     pageUrl: '',
     author: AI,
     license: AI_LICENSE,

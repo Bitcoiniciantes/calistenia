@@ -318,8 +318,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "f5c4e6da9a536bd9ba7dff3dbb3fb8c2215655c7c8ec5ea1e3991e2b08a4e9eb",
       "bytes": 54713,
-      "approved": true,
-      "reason": "reativado-escalador-png-inexistente-13/10"
+      "approved": false,
+      "reason": "substituida-700-posicoesnovas-13/10"
     },
     {
       "path": "Gemini_Generated_Image_ctt282ctt282ctt2 (6).jpg",
@@ -363,8 +363,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "b9e3413064393534168de6d10eedf0064a094d858051ab3d10d87fe3182d7bb1",
       "bytes": 100235,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-700-posicoesnovas-13/10"
     },
     {
       "path": "03_elevacao_de_joelhos_na_barra.png",
@@ -378,8 +378,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "39cc4d85cc013c698b5be28ef89e35ab703cec2a964275e4dd3b461b58170293",
       "bytes": 95855,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-700-posicoesnovas-13/10"
     },
     {
       "path": "04_escalador_mountain_climber.png",
@@ -408,8 +408,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "1a83c49dc96ecedb1c09ac330a8e5e515804957d05aaaccbd762f1948b878994",
       "bytes": 93262,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-700-posicoesnovas-13/10"
     },
     {
       "path": "09_flexao_joelhos_flexionados.png",
@@ -680,6 +680,66 @@
       "bytes": 311395,
       "approved": true,
       "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "posiçõesnovas/02_hollow_hold_corpo_oco.png",
+      "local": "hollow-700.png",
+      "inbox": "posiçõesnovas/02_hollow_hold_corpo_oco.png",
+      "exerciseId": "hollow-hold",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "2cfdece04a84ed816485d8893cbcb98cadd11d36a2aa547616c8c6d4cac59e90",
+      "bytes": 237142,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "posiçõesnovas/03_elevacao_de_joelhos_na_barra.png",
+      "local": "joelhos-barra-700.png",
+      "inbox": "posiçõesnovas/03_elevacao_de_joelhos_na_barra.png",
+      "exerciseId": "knee-raises",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "817a16becfcfda77308964e93dee1c085322176427cbeb738338ab9838719426",
+      "bytes": 223592,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "posiçõesnovas/04_escalador_mountain_climber.png",
+      "local": "escalador-700.png",
+      "inbox": "posiçõesnovas/04_escalador_mountain_climber.png",
+      "exerciseId": "mountain-climbers",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "fe541358f372dfb5bff48a5a8ae9e0e463538d19e630a7e89c55fe08cce67724",
+      "bytes": 269009,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "posiçõesnovas/07_l_sit_nas_paralelas.png",
+      "local": "lsit-700.png",
+      "inbox": "posiçõesnovas/07_l_sit_nas_paralelas.png",
+      "exerciseId": "l-sit",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "9cd42408d2565a4d68b56cefe5cd7138de047654c74e9747fdb6cbb83911efa7",
+      "bytes": 221273,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
     }
   ]
 }

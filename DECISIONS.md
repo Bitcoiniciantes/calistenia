@@ -57,3 +57,7 @@
 - Causa: `ExerciseMedia` renderizava `<img>` sem `onError`; com `frames` apontando para arquivos ainda não baixados (429), o navegador exibia o glifo de imagem quebrada sobre o fundo preto, e o botão Pausar aparecia porque o ramo de animação só checava o array, não o carregamento.
 - Correção: estado de falha por src (derivado, sem efeito; troca de frames limpa o erro); qualquer erro cai no placeholder com nome + instruções (`cues`); Pausar/Reproduzir só no ramo de animação; botões desabilitados exibem motivo curto; shell 430→480 px (390 px inalterado).
 - Testes: "imagem com erro → placeholder" (par e frame único) e "sem animação → sem botão Pausar".
+
+## 2026-10-13 — posicoesnovas 700x700 (17 de 40, qualidade)
+
+- Série neon em 700x700 sem legendas queimadas. 4 integradas após inspeção visual (hollow-700, joelhos-barra-700, escalador-700, lsit-700), substituindo as versões pequenas. Restante redundante com cartões, sem exercício ou incompatível (05 deitado, 08 prancha alta, 06 duplicata). check-refs verde; 36/36 testes; tsc/eslint limpos.

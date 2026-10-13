@@ -162,6 +162,21 @@ correspondente no catálogo de 40.
 Cobertura atual: **17 de 40** exercícios com demonstração (13 cartões +
 hollow, joelhos na barra, L-sit e escalador da série IA + capa).
 
+## Versões 700x700 limpas (`_inbox/posiçõesnovas/`, 13/10)
+
+Mesma série neon em 700x700, sem números/legendas queimados. 4 vistos
+visualmente (02, 03, 04, 07 — hollow, joelhos na barra, escalador, L-sit);
+substituem as versões pequenas. Demais arquivos redundam com cartões já
+integrados (`01/09/10/12/13/15/16`), sem exercício (`11/14`), duplicata (`06`)
+ou incompatíveis (`05` deitado, `08` prancha alta).
+
+| Arquivo `_inbox/posiçõesnovas/` → local | Exercício | SHA-256 | Bytes |
+|---|---|---|---|
+| `02…` → `hollow-700.png` | hollow-hold (única) | `2cfdece0…59e90` | 237142 |
+| `03…` → `joelhos-barra-700.png` | knee-raises (única) | `817a16be…9426` | 223592 |
+| `04…` → `escalador-700.png` | mountain-climbers (única) | `fe541358…7724` | 269009 |
+| `07…` → `lsit-700.png` | l-sit (única) | `9cd42408…1efa7` | 221273 |
+
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).
 - Ícones `public/icons/icon-192.png`, `icon-512.png`, `maskable-512.png` (+ `icon-source.svg`) — design original gerado neste projeto via `scripts/make-icons.mjs` (autoria própria, sem restrição).
