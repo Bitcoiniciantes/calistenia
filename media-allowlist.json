@@ -243,8 +243,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "9ebfd1007340ba2019d253f4584483fe0c6ec90ef19f3c2ae63a3e2bf912edaa",
       "bytes": 51556,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "flexaomeio.jpg",
@@ -258,8 +258,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "e20f96da4bd41de28c7bd479f30df131b17caeda59a0ea65cc05d7719dde6800",
       "bytes": 35100,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "aagachamentoempé.jpg",
@@ -273,8 +273,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "6beb9fe0dd22cc01ec87f222c2299516d816ba01e50d800c812d2e0f234a48a0",
       "bytes": 44766,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "agachamentoembaixo.jpg",
@@ -288,8 +288,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "caef49a05a1f7da19f3b8f0e8f19055e8710178f8cf0b6a0dc3939f14b6ad0b7",
       "bytes": 50490,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "pranchaabdominsl1.jpg",
@@ -303,8 +303,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "0c58f15cc8a98b5cba1ba9a1a99cfa2c9018e08ed86abc06985beb017c9f56b2",
       "bytes": 53429,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "Gemini_Generated_Image_ctt282ctt282ctt2 (3).jpg",
@@ -318,8 +318,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "f5c4e6da9a536bd9ba7dff3dbb3fb8c2215655c7c8ec5ea1e3991e2b08a4e9eb",
       "bytes": 54713,
-      "approved": false,
-      "reason": "substituida-serie-04-13/10"
+      "approved": true,
+      "reason": "reativado-escalador-png-inexistente-13/10"
     },
     {
       "path": "Gemini_Generated_Image_ctt282ctt282ctt2 (6).jpg",
@@ -333,8 +333,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "7fa7cc8813e42d4b2c0defb94782d8899743decc6cfe8c8cad492ebafeb6f988",
       "bytes": 54032,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "01_prancha_lateral.png",
@@ -393,8 +393,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "bc8fdb6247d72268b2abcd2c8ea16ab71ed801bd3fc616a65ee4a595b7decc6f",
       "bytes": 111461,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "07_l_sit_nas_paralelas.png",
@@ -423,8 +423,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "78788105dab12fe2c124b48efd988aa9e102c5e98e47297db83973200ab4762e",
       "bytes": 104450,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "10_flexao_diamante.png",
@@ -438,8 +438,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "da535afcd22c7e51d4e0cba30ee677b85cbf2194407819e48de9a6d42fb641bb",
       "bytes": 101584,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "12_flexao_inclinada_no_banco.png",
@@ -453,8 +453,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "71b60cddd5714c7316e92f1d7fc7a422f6dd86a1bd17aa21368d818f171db682",
       "bytes": 93382,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "15_agachamento_bulgaro.png",
@@ -468,8 +468,8 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "f72e7cf59c28fafaa83d9e00868ac8c28ded75db5da1e92acb9507a99b070958",
       "bytes": 113207,
-      "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
     },
     {
       "path": "16_afundo_avanco.png",
@@ -483,8 +483,203 @@
       "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
       "sha256": "a62bec50592ca277e7cb1fe4ecf50e514c0d9180ffce47460be7a84e153ddb36",
       "bytes": 110491,
+      "approved": false,
+      "reason": "substituida-cartao-20posicoes-13/10"
+    },
+    {
+      "path": "20posicoes/01_flexao_de_braco_tradicional.png",
+      "local": "foto-flexao.png",
+      "inbox": "20posicoes/01_flexao_de_braco_tradicional.png",
+      "exerciseId": "pushup",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "f620f22be0bd1f3d5e7b406857dce04f6b3f24303b09b8aa3bc25f2fd1dbb9d7",
+      "bytes": 362716,
       "approved": true,
-      "reason": "midia-ia-usuario-verificada"
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/02_flexao_de_braco_com_joelhos_apoiados.png",
+      "local": "foto-flexao-joelhos.png",
+      "inbox": "20posicoes/02_flexao_de_braco_com_joelhos_apoiados.png",
+      "exerciseId": "knee-pushup",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "5bd27cbb8517b1cb74c353a1e3537276772a62df53acbf84bcad085049e2cd6c",
+      "bytes": 379279,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/03_flexao_diamante.png",
+      "local": "foto-flexao-diamante.png",
+      "inbox": "20posicoes/03_flexao_diamante.png",
+      "exerciseId": "diamond-pushup",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "5bf5a0930fff5e1e01c32c46ca9a656a44dfff694b7dfdf060934ff7ef58da72",
+      "bytes": 337114,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/05_flexao_inclinada.png",
+      "local": "foto-flexao-inclinada.png",
+      "inbox": "20posicoes/05_flexao_inclinada.png",
+      "exerciseId": "incline-pushup",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "40ef6af88c86bf080b67a5406f8892d7d2cc242fd659988c0b8d19a8a71f60dd",
+      "bytes": 348403,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/06_agachamento_livre.png",
+      "local": "foto-agachamento.png",
+      "inbox": "20posicoes/06_agachamento_livre.png",
+      "exerciseId": "bodyweight-squat",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "6e9c00ae8217c1c8ad5be7de0f22d260fae7aa98db321a0f6bcfe6957582a594",
+      "bytes": 310219,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/08_agachamento_bulgaro.png",
+      "local": "foto-bulgaro.png",
+      "inbox": "20posicoes/08_agachamento_bulgaro.png",
+      "exerciseId": "bulgarian-split",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "968781924d778bf93d3256e5cae2f80ca7c5c8672cea3e08e438c53fea9a992d",
+      "bytes": 341681,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/10_avanco_reverso.png",
+      "local": "foto-avanco-reverso.png",
+      "inbox": "20posicoes/10_avanco_reverso.png",
+      "exerciseId": "reverse-lunge",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "5412f1436f2716adc1b997e4b244397a7595583fa1e1edde6b76874fc29fffeb",
+      "bytes": 351586,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/11_elevacao_pelvica_glute_bridge.png",
+      "local": "foto-ponte.png",
+      "inbox": "20posicoes/11_elevacao_pelvica_glute_bridge.png",
+      "exerciseId": "glute-bridge",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "1d9d0b1d5640d163209d83672ea1cce0447a3982fd83dc70c306147b871c9e2c",
+      "bytes": 340086,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/12_panturrilha_em_pe.png",
+      "local": "foto-panturrilha.png",
+      "inbox": "20posicoes/12_panturrilha_em_pe.png",
+      "exerciseId": "calf-raises",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "931fa06ce58d3c404cefcb22ae9a7aeab3af48eb3178a225dad343ea38c6e3d6",
+      "bytes": 310439,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/13_prancha_abdominal.png",
+      "local": "foto-prancha.png",
+      "inbox": "20posicoes/13_prancha_abdominal.png",
+      "exerciseId": "plank",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "366e458d055117a6b6016aa9f99e03068f69c12eadebaa0bfe3d33f16c5c2e40",
+      "bytes": 314596,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/14_prancha_lateral.png",
+      "local": "foto-prancha-lateral.png",
+      "inbox": "20posicoes/14_prancha_lateral.png",
+      "exerciseId": "side-plank",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "8fecadcf51734781130186a792a9552301bced628a5eda3302bcd600a317e946",
+      "bytes": 335885,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/19_pike_push_up_flexao_pike.png",
+      "local": "foto-pike.png",
+      "inbox": "20posicoes/19_pike_push_up_flexao_pike.png",
+      "exerciseId": "pike-pushup",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "b2945dd082f5a549281b53caf2e9c4819209bb8ea76564d39a0fc939c721ef61",
+      "bytes": 367475,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
+    },
+    {
+      "path": "20posicoes/20_parada_de_maos_na_parede_handstand_hold.png",
+      "local": "foto-handstand.png",
+      "inbox": "20posicoes/20_parada_de_maos_na_parede_handstand_hold.png",
+      "exerciseId": "handstand-wall",
+      "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
+      "license": "Produção própria do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
+      "sha256": "d2ec8c0297be5dd02db9626c18d38e743aa293c9c8decb4fbab17048c86ae6fa",
+      "bytes": 311395,
+      "approved": true,
+      "reason": "cartao-usuario-verificado"
     }
   ]
 }

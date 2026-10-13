@@ -48,6 +48,10 @@
 
 - Publicado estava em dia (git limpo, Pages no commit verificado). 10 imagens da série integradas após inspeção visual (SHA-256 + tipo real): lateral, hollow, joelhos na barra, escalador (substitui `escalador.jpg`), L-sit, flexões joelhos/diamante/inclinada, búlgaro, afundo (ilustra `reverse-lunge`). NÃO incluídas: `05` (deitado vs pendurado), `06` (duplicata da 02), `08` (prancha alta vs antebraços), `11`/`14` (sem exercício), `13` (redundante com par animado), nomes não-identificáveis (aguardam nome do exercício), colagem 1,8 MB.
 
+## 2026-10-13 — Cartões 20posicoes (cobertura 14→17 de 40) + correções
+
+- 13 cartões 700x700 do usuário como identidade visual (9 vistos + 4 por nome na série uniforme). Preenchem: glute-bridge, calf-raises, handstand-wall (troca embed TODO por local — skill com mídia). `escalador.png` nunca existiu (sync gerou `.jpg`): `mountain-climbers` ficou com ref quebrada desde o deploy anterior (fallback placeholder salvou); corrigido de volta para `escalador.jpg` + crédito. `pike-pushup` também apontava para edição não aplicada; corrigido para `foto-pike.png`. Verificação nova: script `check-refs` (todo frames existe + tem crédito).
+
 ## 2026-10-13 — Parte B: diagnóstico do bug da tela /execucao
 
 - Causa: `ExerciseMedia` renderizava `<img>` sem `onError`; com `frames` apontando para arquivos ainda não baixados (429), o navegador exibia o glifo de imagem quebrada sobre o fundo preto, e o botão Pausar aparecia porque o ramo de animação só checava o array, não o carregamento.

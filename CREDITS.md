@@ -131,6 +131,37 @@ exercício), `Grade…Neon Azul.png` (colagem 1,8 MB).
 
 Cobertura atual: **14 de 40** exercícios com demonstração.
 
+## Cartões 700x700 do usuário (`_inbox/20posicoes/`, 13/10)
+
+Cartões numerados com foto e legenda em pt-BR, produção própria do usuário
+(uso declarado em 13/10/2026). 9 vistos visualmente (01, 02, 06, 10, 11, 12,
+13, 19, 20); 03/05/08/14 aceitos pelo nome na série uniforme (mesmo estilo,
+nomes precisos). Incluídos SEM modificação (bytes idênticos), via
+`sync-media:local` com SHA-256 verificado. Arquivos IA substituídos seguem
+preservados em `_inbox/` + git, fora do build. NÃO incluídos: `04` (declinada),
+`07` (sumo), `09` (afundo alternado — `10` cobre o reverso), `15` (bicicleta),
+`16` (pernas deitado), `17` (dead bug), `18` (superman) — sem exercício
+correspondente no catálogo de 40.
+
+| Arquivo `_inbox/20posicoes/` → local | Exercício | SHA-256 | Bytes |
+|---|---|---|---|
+| `01…tradicional.png` → `foto-flexao.png` | pushup (única; substitui par animado) | `f620f22b…b9d7` | 362716 |
+| `02…joelhos_apoiados.png` → `foto-flexao-joelhos.png` | knee-pushup (única) | `5bd27cbb…c6c` | 379279 |
+| `03_flexao_diamante.png` → `foto-flexao-diamante.png` | diamond-pushup (única) | `5bf5a093…da72` | 337114 |
+| `05_flexao_inclinada.png` → `foto-flexao-inclinada.png` | incline-pushup (única) | `40ef6af8…60dd` | 348403 |
+| `06_agachamento_livre.png` → `foto-agachamento.png` | bodyweight-squat (única; substitui par animado) | `6e9c00ae…594` | 310219 |
+| `08_agachamento_bulgaro.png` → `foto-bulgaro.png` | bulgarian-split (única) | `96878192…992d` | 341681 |
+| `10_avanco_reverso.png` → `foto-avanco-reverso.png` | reverse-lunge (única) | `5412f143…feb` | 351586 |
+| `11…glute_bridge.png` → `foto-ponte.png` | glute-bridge (única) | `1d9d0b1d…9e2c` | 340086 |
+| `12_panturrilha_em_pe.png` → `foto-panturrilha.png` | calf-raises (única) | `931fa06c…e3d6` | 310439 |
+| `13_prancha_abdominal.png` → `foto-prancha.png` | plank (única) | `366e458d…2e40` | 314596 |
+| `14_prancha_lateral.png` → `foto-prancha-lateral.png` | side-plank (única) | `8fecadcf…e946` | 335885 |
+| `19…flexao_pike.png` → `foto-pike.png` | pike-pushup (única) | `b2945dd0…ef61` | 367475 |
+| `20…handstand_hold.png` → `foto-handstand.png` | handstand-wall (única; substitui TODO de embed — pilar skill com mídia) | `d2ec8c02…ae6fa` | 311395 |
+
+Cobertura atual: **17 de 40** exercícios com demonstração (13 cartões +
+hollow, joelhos na barra, L-sit e escalador da série IA + capa).
+
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).
 - Ícones `public/icons/icon-192.png`, `icon-512.png`, `maskable-512.png` (+ `icon-source.svg`) — design original gerado neste projeto via `scripts/make-icons.mjs` (autoria própria, sem restrição).
