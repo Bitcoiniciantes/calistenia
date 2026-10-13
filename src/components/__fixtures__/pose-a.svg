@@ -1,0 +1,8 @@
+<!-- TEST FIXTURE — não é mídia do catálogo. Figura original para exercitar o crossfade. Pose A (braços em cima). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img">
+  <title>Fixture pose A</title>
+  <rect width="200" height="200" fill="#222"/>
+  <circle cx="100" cy="52" r="18" fill="#fff"/>
+  <path d="M100 70 L100 130 M100 90 L60 50 M100 90 L140 50 M100 130 L70 180 M100 130 L130 180" stroke="#fff" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <text x="12" y="190" font-size="20" fill="#888" font-family="sans-serif">A</text>
+</svg>
