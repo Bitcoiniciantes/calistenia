@@ -53,7 +53,7 @@ function Shell({ repo }: { repo: Repository }) {
         <Route path="/execucao/:sessionId" element={<ExecucaoPorId repo={repo} />} />
         <Route path="/biblioteca" element={<Biblioteca />} />
         <Route path="/exercicio/:id" element={<DetalheExercicio />} />
-        <Route path="/programas" element={<Programas />} />
+        <Route path="/programas" element={<Programas repo={repo} />} />
         <Route path="/programas/:id" element={<DetalhePrograma repo={repo} />} />
         <Route path="/progresso" element={<Progresso repo={repo} />} />
         <Route path="/ajustes" element={<Ajustes repo={repo} />} />
