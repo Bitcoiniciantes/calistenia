@@ -44,9 +44,9 @@ export default function App() {
   useEffect(() => {
     try {
       const saved = localStorage.getItem('calistenia-theme')
-      if (saved === 'dark' || saved === 'light') {
-        document.documentElement.dataset['theme'] = saved
-      }
+      // Padrão: escuro (só usa claro se o usuário escolheu).
+      document.documentElement.dataset['theme'] =
+        saved === 'light' ? 'light' : 'dark'
     } catch {
       /* sem storage */
     }

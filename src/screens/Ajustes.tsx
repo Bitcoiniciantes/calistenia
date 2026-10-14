@@ -11,9 +11,9 @@ export function Ajustes({ repo }: { repo: Repository }) {
   const [reminder, setReminder] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
     typeof document !== 'undefined' &&
-    document.documentElement.dataset['theme'] === 'dark'
-      ? 'dark'
-      : 'light',
+    document.documentElement.dataset['theme'] === 'light'
+      ? 'light'
+      : 'dark',
   )
   const [msg, setMsg] = useState('')
 
