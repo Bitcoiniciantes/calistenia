@@ -575,7 +575,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             type="button"
             disabled={!easier}
             title={easier ? `Trocar por ${easier.namePt}` : 'Sem regressão: já é o mais fácil'}
-            className="touch-target flex-1 rounded-xl px-2 text-sm font-semibold disabled:opacity-40"
+            className="touch-target min-w-0 flex-1 rounded-xl px-2 text-sm font-semibold disabled:opacity-40"
             style={{ background: 'var(--surface-2)' }}
             onClick={() => {
               if (easier) {
@@ -590,7 +590,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             type="button"
             disabled={!harder}
             title={harder ? `Trocar por ${harder.namePt}` : 'Sem progressão: já é o mais difícil'}
-            className="touch-target flex-1 rounded-xl px-2 text-sm font-semibold disabled:opacity-40"
+            className="touch-target min-w-0 flex-1 rounded-xl px-2 text-sm font-semibold disabled:opacity-40"
             style={{ background: 'var(--surface-2)' }}
             onClick={() => {
               if (harder) {
