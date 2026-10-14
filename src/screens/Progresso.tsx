@@ -144,13 +144,21 @@ export function Progresso({ repo }: { repo: Repository }) {
       <section aria-label="Recordes pessoais" className="card p-4">
         <h2 className="card-title">Recordes</h2>
         {prs.size === 0 && <p className="caption mt-1">Sem recordes ainda.</p>}
+        {[...prs.values()].some(
+          (pr) => pr.reps === undefined && pr.holdSec === undefined,
+        ) && (
+          <p className="caption mt-1">— = sem registro (treinos antigos).</p>
+        )}
         <ul className="mt-1 text-sm">
           {[...prs.entries()].map(([id, pr]) => (
             <li key={id} className="flex justify-between gap-2 py-0.5">
               <span>{exerciseById[id]?.namePt ?? id}</span>
               <span className="tnum font-semibold">
-                {pr.reps !== undefined ? `${pr.reps} reps` : ''}
-                {pr.holdSec !== undefined ? `${pr.holdSec}s` : ''}
+                {pr.reps !== undefined
+                  ? `${pr.reps} reps`
+                  : pr.holdSec !== undefined
+                    ? `${pr.holdSec} s`
+                    : '—'}
               </span>
             </li>
           ))}

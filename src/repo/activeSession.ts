@@ -64,10 +64,14 @@ export function completeSet(
   const item = session.items[next.currentItemIndex]
   if (!item) return next
 
+  // Carimba o alvo da série (reps ou segundos): concluir = cumpriu o
+  // prescrito, e é disso que os recordes pessoais são calculados.
   const entry = next.entries[next.currentItemIndex]
   entry?.sets.splice(next.currentSet - 1, 1, {
     ...(entry.sets[next.currentSet - 1] ?? { done: false }),
     done: true,
+    ...(item.reps !== undefined ? { reps: item.reps } : {}),
+    ...(item.holdSec !== undefined ? { holdSec: item.holdSec } : {}),
   })
   // Descanso após a série concluída. Com 0 (último exercício), não grava
   // restEndsAt: evita flash do painel por relógio defasado (restMs > 0
