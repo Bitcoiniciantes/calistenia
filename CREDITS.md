@@ -188,7 +188,7 @@ giro — aceita como ilustração da posição-base, com a ressalva registrada a
 |---|---|---|---|
 | `01_flexao_arqueiro.png` → `barra-arqueiro.png` | archer-pushup (única) | `6c321c22…d64f2b` | 196469 |
 | `02_pseudo_planche.png` → `barra-pseudo.png` | pseudo-planche (única) | `d5dbcf58…423b` | 185904 |
-| `03_remada_invertida.png` → `barra-remada.png` | inverted-row (única) | `bf3d1440…4275` | 186208 |
+| `03_remada_invertida.png` → `barra-remada.png` | inverted-row (única; v2 com legenda, 14/10) | `ac48ea13…1659e` | 1972291 |
 | `04_…pes_elevados.png` → `barra-remada-elev.png` | inverted-row-elevated (única) | `483f0805…cb1` | 180938 |
 | `05_pendurado_na_barra.png` → `barra-deadhang.png` | dead-hang (única) | `c65e03f5…c6de` | 139964 |
 | `06_barra_com_negativa.png` → `barra-negativa.png` | negative-pullup (única) | `808e48f8…f8d` | 144487 |
