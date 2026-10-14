@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { mediaCredits } from '../data/mediaCredits'
-import { parseBackup } from '../repo/backup'
 import type { Repository } from '../repo/Repository'
 import type { UserProfile } from '../repo/types'
 
-/** Ajustes: perfil, lembrete honesto, backup JSON, tema e créditos. */
+/** Ajustes: perfil, lembrete de treino e tema. */
 export function Ajustes({ repo }: { repo: Repository }) {
   const [profile, setProfile] = useState<UserProfile | undefined>()
   const [reminder, setReminder] = useState('')
@@ -45,36 +43,6 @@ export function Ajustes({ repo }: { repo: Repository }) {
     await repo.saveProfile(next)
     setProfile(next)
     setMsg('Lembrete salvo (só dentro do app).')
-  }
-
-  async function exportJson() {
-    const [p, logs] = await Promise.all([repo.getProfile(), repo.listLogs()])
-    const blob = new Blob([JSON.stringify({ profile: p, logs }, null, 2)], {
-      type: 'application/json',
-    })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'calistenia-backup.json'
-    a.click()
-    URL.revokeObjectURL(url)
-    setMsg('Backup exportado.')
-  }
-
-  async function importJson(file: File) {
-    try {
-      // Valida sem tocar nos dados; rejeita com mensagem clara.
-      const data = parseBackup(await file.text())
-      if (data.profile) await repo.saveProfile(data.profile)
-      if (Array.isArray(data.logs)) {
-        for (const log of data.logs) await repo.addLog(log)
-      }
-      const p = await repo.getProfile()
-      setProfile(p)
-      setMsg('Backup importado.')
-    } catch (e) {
-      setMsg(e instanceof Error ? e.message : 'Arquivo inválido.')
-    }
   }
 
   return (
@@ -117,8 +85,10 @@ export function Ajustes({ repo }: { repo: Repository }) {
           Salvar lembrete
         </button>
         <p className="rounded border p-2 text-sm">
-          Lembrete só dentro do app; sem notificação em segundo plano ou com o
-          app fechado.
+          Para que serve: guarda o horário em que você pretende treinar,
+          como um compromisso pessoal. O app não envia notificação — na
+          Fase 1 não há push nem aviso com o app fechado; o horário fica
+          salvo aqui para você consultar.
         </p>
       </section>
 
@@ -132,29 +102,6 @@ export function Ajustes({ repo }: { repo: Repository }) {
         </ul>
       </section>
 
-      <section aria-label="Backup" className="flex flex-col gap-2">
-        <h2 className="font-bold">Backup</h2>
-        <button
-          type="button"
-          onClick={() => void exportJson()}
-          className="touch-target rounded border px-4 text-sm"
-        >
-          Exportar JSON
-        </button>
-        <label className="touch-target flex items-center gap-2 rounded border px-4 text-sm">
-          Importar JSON
-          <input
-            type="file"
-            accept="application/json"
-            className="hidden"
-            onChange={(e) => {
-              const f = e.target.files?.[0]
-              if (f) void importJson(f)
-            }}
-          />
-        </label>
-      </section>
-
       <section aria-label="Tema">
         <h2 className="font-bold">Tema</h2>
         <button
@@ -165,33 +112,6 @@ export function Ajustes({ repo }: { repo: Repository }) {
         >
           Tema: {theme === 'dark' ? 'escuro' : 'claro'} (trocar)
         </button>
-      </section>
-
-      <section aria-label="Créditos de mídia">
-        <h2 className="font-bold">Créditos de mídia</h2>
-        <ul className="mt-1 flex flex-col gap-2">
-          {mediaCredits.map((c) => (
-            <li key={c.file} className="rounded border p-2 text-sm">
-              <p className="font-medium">{c.file}</p>
-              <p>
-                Autor: {c.author} ·{' '}
-                {c.licenseUrl ? (
-                  <a href={c.licenseUrl} target="_blank" rel="noreferrer" className="underline">
-                    {c.license}
-                  </a>
-                ) : (
-                  <span>{c.license}</span>
-                )}
-              </p>
-              <p className="opacity-70">{c.attribution}</p>
-              {c.pageUrl ? (
-                <a href={c.pageUrl} target="_blank" rel="noreferrer" className="underline">
-                  Página do arquivo no Wikimedia Commons
-                </a>
-              ) : null}
-            </li>
-          ))}
-        </ul>
       </section>
 
       <Link to="/" className="text-sm underline">
