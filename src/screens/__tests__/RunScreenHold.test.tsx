@@ -79,15 +79,15 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
     // Série 1/2 do ÚLTIMO exercício: conclui pelo toque, sem descanso —
     // a próxima série começa sozinha (timeout de 0 ms, disparado à parte
     // porque efeitos passivos só descarregam ao sair do act).
-    fireEvent.click(screen.getByText('Iniciar 15s'))
+    fireEvent.click(screen.getByRole('button', { name: 'Iniciar 15s' }))
     expect(screen.getByText(/\(concluir\)/).textContent).toMatch(/15s/)
-    fireEvent.click(screen.getByText(/\(concluir\)/))
+    fireEvent.click(screen.getByRole('button', { name: /\(concluir\)/ }))
     expect(screen.queryByTestId('rest-panel')).toBeNull()
     expect(screen.getByText(/Série 2\/2/)).toBeTruthy()
     act(() => {
       vi.runOnlyPendingTimers()
     })
-    fireEvent.click(screen.getByText(/\(concluir\)/))
+    fireEvent.click(screen.getByRole('button', { name: /\(concluir\)/ }))
 
     // Última série concluída pelo toque → parabéns + log.
     expect(screen.getByText('Parabéns! Treino concluído!')).toBeTruthy()
@@ -109,8 +109,8 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
     })
 
     // Item 1/2 concluído → painel de descanso (não é o último exercício).
-    fireEvent.click(screen.getByText('Iniciar 15s'))
-    fireEvent.click(screen.getByText(/\(concluir\)/))
+    fireEvent.click(screen.getByRole('button', { name: 'Iniciar 15s' }))
+    fireEvent.click(screen.getByRole('button', { name: /\(concluir\)/ }))
     expect(screen.getByTestId('rest-panel')).toBeTruthy()
 
     // Descanso termina → item 2/2 (último) inicia sozinho; concluir encerra.
@@ -120,7 +120,7 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
     act(() => {
       vi.runOnlyPendingTimers()
     })
-    fireEvent.click(screen.getByText(/\(concluir\)/))
+    fireEvent.click(screen.getByRole('button', { name: /\(concluir\)/ }))
     expect(screen.getByText('Parabéns! Treino concluído!')).toBeTruthy()
     expect(repo.logs).toBe(1)
   })

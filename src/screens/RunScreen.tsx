@@ -87,9 +87,7 @@ function TimerRing({
   )
 }
 
-export function RunScreen({ session, repo }: RunScreenProps) {
-
-/** Janela de execução da série de repetições (s): ao zerar, avança sozinho. */
+ /** Janela de execução da série de repetições (s): ao zerar, avança sozinho. */
 const DEFAULT_SERIES_SEC = 30
 /** Descanso padrão (s) quando o perfil não define outro valor. */
 const DEFAULT_REST_SEC = 30
