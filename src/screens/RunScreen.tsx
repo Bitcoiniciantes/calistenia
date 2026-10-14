@@ -28,7 +28,9 @@ function formatCountdown(ms: number): string {
 }
 
 /** Janela de execução da série de repetições (s): ao zerar, avança sozinho. */
-const DEFAULT_SERIES_SEC = 60
+const DEFAULT_SERIES_SEC = 30
+/** Descanso padrão (s) quando o perfil não define outro valor. */
+const DEFAULT_REST_SEC = 30
 
 /** Bipe curto de fim de descanso (WebAudio, sem arquivos). Opcional. */
 function beep() {
@@ -121,7 +123,8 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   const restMs = active ? restRemainingMs(active, now) : 0
   const resting = restMs > 0 && !finished
 
-  // Fim do descanso: bipe (se ativado) + vibração. Som é opcional.
+  // Fim do descanso: bipe (se ativado) + vibração, e início automático
+  // da próxima série (a imagem já avançou na conclusão da série anterior).
   useEffect(() => {
     if (wasResting.current && !resting && !finished) {
       if (soundOn) beep()
@@ -132,9 +135,18 @@ export function RunScreen({ session, repo }: RunScreenProps) {
           /* sem vibração */
         }
       }
+      // Início automático fora do corpo do efeito (setState síncrono
+      // em efeito causa render em cascata; aqui vai num callback).
+      const auto =
+        exercise?.type === 'hold'
+          ? () => setHoldLeft((v) => v ?? item?.holdSec ?? 30)
+          : () => setSeriesLeft((v) => v ?? seriesSec)
+      const t = window.setTimeout(auto, 0)
+      wasResting.current = resting
+      return () => window.clearTimeout(t)
     }
     wasResting.current = resting
-  }, [resting, finished, soundOn])
+  }, [resting, finished, soundOn, exercise, item, seriesSec])
 
   async function toggleSound() {
     const next = !soundOn
@@ -164,7 +176,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
         prev,
         session,
         new Date().toISOString(),
-        restOverride,
+        restOverride ?? DEFAULT_REST_SEC,
       )
       if (isFinished(next, session)) {
         const durationSec = Math.max(

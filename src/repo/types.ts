@@ -90,9 +90,9 @@ export interface UserProfile {
   reminderTime?: string
   activeProgramId?: string
   soundOn?: boolean
-  /** Janela da série em segundos (padrão 60 quando ausente). */
+  /** Janela da série em segundos (padrão 30 quando ausente). */
   seriesSec?: number
-  /** Descanso entre séries em segundos (ausente = usa o do programa). */
+  /** Descanso entre séries em segundos (ausente = 30 padrão). */
   restSecOverride?: number
 }
 

@@ -89,3 +89,8 @@
 ## 2026-10-14 — Tempos ajustáveis + Descanse
 
 - Perfil: seriesSec (padrão 60) e restSecOverride (vazio = programa). Ajustes ganha seção Tempos (10–600 s). RunScreen: painel de descanso com título Descanse…; botão Iniciar a série (Xs) usa configurado; descanso usa override. completeSet ganha 4º parâmetro opcional (testes antigos intactos). 40/40 testes.
+
+## 2026-10-14 — Avanço automático pós-descanso + padrão 30/30
+
+- Fim do descanso inicia sozinho o timer da próxima série (reps: seriesSec; hold: holdSec). Imagem já avança na conclusão da série; descanso mostra Descanse… + próximo. Verificado em navegador (série 10s/descanso 10s auto-iniciou).
+- Padrões: série 30s, descanso 30s (Ajustes > Tempos; descanso vazio = 30s). Tempos ficam no perfil Dexie: recarregar não altera.

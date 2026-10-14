@@ -7,7 +7,7 @@ import type { UserProfile } from '../repo/types'
 export function Ajustes({ repo }: { repo: Repository }) {
   const [profile, setProfile] = useState<UserProfile | undefined>()
   const [reminder, setReminder] = useState('')
-  const [seriesSec, setSeriesSec] = useState('60')
+  const [seriesSec, setSeriesSec] = useState('30')
   const [restSec, setRestSec] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
     typeof document !== 'undefined' &&
@@ -21,7 +21,7 @@ export function Ajustes({ repo }: { repo: Repository }) {
     void repo.getProfile().then((p) => {
       setProfile(p)
       setReminder(p?.reminderTime ?? '')
-      setSeriesSec(String(p?.seriesSec ?? 60))
+      setSeriesSec(String(p?.seriesSec ?? 30))
       setRestSec(p?.restSecOverride === undefined ? '' : String(p.restSecOverride))
     })
   }, [repo])
@@ -61,10 +61,10 @@ export function Ajustes({ repo }: { repo: Repository }) {
       daysPerWeek: 3,
       goal: 'strength',
     }
-    const rest = restSec.trim() === '' ? undefined : clampSec(Number(restSec), 60)
+    const rest = restSec.trim() === '' ? undefined : clampSec(Number(restSec), 30)
     const next = {
       ...base,
-      seriesSec: clampSec(Number(seriesSec), 60),
+      seriesSec: clampSec(Number(seriesSec), 30),
       restSecOverride: rest,
     }
     await repo.saveProfile(next)
@@ -140,7 +140,7 @@ export function Ajustes({ repo }: { repo: Repository }) {
             type="number"
             min={10}
             max={600}
-            placeholder="do programa"
+            placeholder="padrão 30s"
             value={restSec}
             onChange={(e) => setRestSec(e.target.value)}
             className="touch-target w-24 rounded border px-2"
@@ -154,8 +154,8 @@ export function Ajustes({ repo }: { repo: Repository }) {
           Salvar tempos
         </button>
         <p className="rounded border p-2 text-sm">
-          A série conclui sozinha ao zerar (10–600 s). Descanso vazio usa o
-          tempo do programa.
+          A série conclui sozinha ao zerar (10–600 s). Descanso vazio = 30s.
+          Ficam salvos no aparelho: recarregar a tela não altera.
         </p>
       </section>
 
