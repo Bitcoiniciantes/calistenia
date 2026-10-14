@@ -213,17 +213,20 @@ export function RunScreen({ session, repo }: RunScreenProps) {
 
   // Entrada no treino: a 1ª série começa sozinha (sem toque extra).
   // Só uma vez por montagem e com o perfil já carregado; Parar/Pular
-  // continuam manuais (não rearma).
+  // continuam manuais (não rearma). setState via timeout (regra do eslint).
   useEffect(() => {
     if (autoStarted.current) return
     if (!active || !profileReady || finished || resting || done) return
     if (holdLeft !== null || seriesLeft !== null) return
     autoStarted.current = true
-    if (exercise?.type === 'hold') {
-      setHoldLeft(item?.holdSec ?? 30)
-    } else {
-      setSeriesLeft(seriesSec)
-    }
+    const t = window.setTimeout(() => {
+      if (exercise?.type === 'hold') {
+        setHoldLeft(item?.holdSec ?? 30)
+      } else {
+        setSeriesLeft(seriesSec)
+      }
+    }, 0)
+    return () => window.clearTimeout(t)
   }, [
     active,
     profileReady,

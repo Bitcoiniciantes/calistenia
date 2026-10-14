@@ -142,3 +142,7 @@
 - Padrão de cada imagem: 60s → 30s (`SLIDE_MS`); perfil ganha `alongamentoSec` e Ajustes > Tempos ganha o campo Alongamento (10–600 s, padrão 30s).
 - Fim da sequência (18/18, 20/20) mostra `Parabéns! Sequência concluída!` + `Recomeçar` em vez de reiniciar sozinho; trocar de grupo reinicia.
 - Testes de Alongamentos atualizados (30s, parabéns, recomeço, duração do perfil). 46/46 testes; tsc/eslint/build limpos. E2E: navegação até 18/18 → parabéns → recomeço em 1/18.
+
+## 2026-10-14 — v11: cartão 02 flexão de joelhos atualizado
+
+- `_inbox/20posicoes/02_flexao_de_braco_com_joelhos_apoiados.png` trocado pelo usuário (583908 bytes, SHA-256 `2eb938b7…dbcc`, PNG real). Re-sincronizado via `sync-media:local` (bytes idênticos) para `foto-flexao-joelhos.png`; allowlist + CREDITS atualizados. Nome do arquivo no app inalterado.

@@ -509,10 +509,10 @@
       "author": "produção própria do usuário (cartões 700x700 numerados, pasta 20posicoes); uso declarado pelo usuário em 13/10/2026",
       "license": "Produção própria do usuário (uso declarado)",
       "licenseUrl": "",
-      "verifiedAt": "2026-10-13",
+      "verifiedAt": "2026-10-14",
       "attribution": "Cartão produzido pelo usuário (declarado em 13/10/2026)",
-      "sha256": "5bd27cbb8517b1cb74c353a1e3537276772a62df53acbf84bcad085049e2cd6c",
-      "bytes": 379279,
+      "sha256": "2eb938b7d6c6b57686d3f5fc33eb1aceeac973ae31bdfcd0a968fc174798dbcc",
+      "bytes": 583908,
       "approved": true,
       "reason": "cartao-usuario-verificado"
     },

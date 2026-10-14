@@ -146,7 +146,7 @@ correspondente no catálogo de 40.
 | Arquivo `_inbox/20posicoes/` → local | Exercício | SHA-256 | Bytes |
 |---|---|---|---|
 | `01…tradicional.png` → `foto-flexao.png` | pushup (única; substitui par animado) | `f620f22b…b9d7` | 362716 |
-| `02…joelhos_apoiados.png` → `foto-flexao-joelhos.png` | knee-pushup (única) | `5bd27cbb…c6c` | 379279 |
+| `02…joelhos_apoiados.png` → `foto-flexao-joelhos.png` | knee-pushup (única; atualizada em 14/10) | `2eb938b7…dbcc` | 583908 |
 | `03_flexao_diamante.png` → `foto-flexao-diamante.png` | diamond-pushup (única) | `5bf5a093…da72` | 337114 |
 | `05_flexao_inclinada.png` → `foto-flexao-inclinada.png` | incline-pushup (única) | `40ef6af8…60dd` | 348403 |
 | `06_agachamento_livre.png` → `foto-agachamento.png` | bodyweight-squat (única; substitui par animado) | `6e9c00ae…594` | 310219 |

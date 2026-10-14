@@ -100,6 +100,7 @@ export function Biblioteca() {
   // Bottom sheet: fecha com Esc, trava o scroll, devolve o foco.
   useEffect(() => {
     if (!sheetOpen) return
+    const trigger = filterBtnRef.current
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') setSheetOpen(false)
     }
@@ -109,7 +110,7 @@ export function Biblioteca() {
     return () => {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = prev
-      filterBtnRef.current?.focus()
+      trigger?.focus()
     }
   }, [sheetOpen])
 

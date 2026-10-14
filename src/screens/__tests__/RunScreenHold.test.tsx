@@ -76,7 +76,11 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
       screen.getByRole('link', { name: '‹ Sair' }).getAttribute('href'),
     ).toBe('/')
 
-    // Série 1/2 do ÚLTIMO exercício: já começa sozinha ao abrir o treino.
+    // Série 1/2 do ÚLTIMO exercício: já começa sozinha ao abrir o treino
+    // (timeout de 0 ms do auto-início, disparado à parte).
+    act(() => {
+      vi.runOnlyPendingTimers()
+    })
     // Concluir pelo toque, sem descanso — a próxima auto-inicia.
     expect(screen.getByText(/\(concluir\)/)).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: /\(concluir\)/ }))
@@ -107,6 +111,9 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
     })
 
     // Item 1/2 (não-último) já auto-iniciou: concluir mostra descanso.
+    act(() => {
+      vi.runOnlyPendingTimers()
+    })
     expect(screen.getByText(/\(concluir\)/)).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: /\(concluir\)/ }))
     expect(screen.getByTestId('rest-panel')).toBeTruthy()

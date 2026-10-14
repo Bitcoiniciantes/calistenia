@@ -4,4 +4,4 @@
  * se a página já atualizou — o SW pode segurar a versão antiga
  * até recarregar.
  */
-export const APP_VERSION = 'v10'
+export const APP_VERSION = 'v11'
