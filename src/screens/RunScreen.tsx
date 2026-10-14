@@ -172,11 +172,13 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     setSeriesLeft(null)
     setActive((prev) => {
       if (!prev) return prev
+      // Último exercício: sem descanso — termina mais rápido.
+      const lastItem = prev.currentItemIndex === session.items.length - 1
       const next = completeSet(
         prev,
         session,
         new Date().toISOString(),
-        restOverride ?? DEFAULT_REST_SEC,
+        lastItem ? 0 : (restOverride ?? DEFAULT_REST_SEC),
       )
       if (isFinished(next, session)) {
         const durationSec = Math.max(
@@ -200,11 +202,26 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             /* sem vibração */
           }
         }
+      } else if (lastItem) {
+        // Sem painel de descanso: a próxima série começa sozinha.
+        const nextEx =
+          exerciseById[currentExerciseId(next, session) ?? '']
+        const startNext =
+          nextEx?.type === 'hold'
+            ? () =>
+                setHoldLeft(
+                  (v) =>
+                    v ??
+                    session.items[next.currentItemIndex]?.holdSec ??
+                    30,
+                )
+            : () => setSeriesLeft((v) => v ?? seriesSec)
+        window.setTimeout(startNext, 0)
       }
       setHoldLeft(null)
       return next
     })
-  }, [repo, session, restOverride])
+  }, [repo, session, restOverride, seriesSec])
 
   // Timer da série (repetições): contagem regressiva; ao zerar, conclui
   // a série e pula para a próxima imagem. Tocar de novo conclui antes.
@@ -289,7 +306,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     )
     return (
       <div className="app-shell items-center justify-center gap-4 p-6 text-center">
-        <h1 className="text-xl font-bold">Treino concluído!</h1>
+        <h1 className="text-xl font-bold">Parabéns! Treino concluído!</h1>
         <p className="text-sm">{totalSets ?? 0} séries registradas no histórico local.</p>
         <Link
           to="/"

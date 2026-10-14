@@ -23,11 +23,21 @@ function stubRepo(profile?: UserProfile): Repository & { logs: number } {
   return stub
 }
 
-/** 1 item hold × 2 séries: cabe num teste rápido com descanso curto. */
+/** 1 item hold × 2 séries: é o último exercício → sem descanso. */
 const HOLD_SESSION: Session = {
   id: 'test-hold',
   title: 'Hold teste',
   items: [{ exerciseId: 'dead-hang', sets: 2, holdSec: 15, restSec: 60 }],
+}
+
+/** 2 itens hold × 1 série: o 1º (não-último) tem descanso normal. */
+const TWO_ITEM_SESSION: Session = {
+  id: 'test-hold-2',
+  title: 'Hold teste 2',
+  items: [
+    { exerciseId: 'dead-hang', sets: 1, holdSec: 15, restSec: 60 },
+    { exerciseId: 'dead-hang', sets: 1, holdSec: 15, restSec: 60 },
+  ],
 }
 
 const PROFILE: UserProfile = {
@@ -45,7 +55,7 @@ afterEach(() => {
 })
 
 describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () => {
-  it('concluir a série 1/2 pelo toque mostra Descanse…; na 2/2 encerra o treino', async () => {
+  it('último exercício: sem descanso, próxima série auto-inicia e encerra com parabéns', async () => {
     // Descanso usa relógio de parede: Date precisa ser falso para avançar.
     vi.useFakeTimers({
       toFake: ['setTimeout', 'clearTimeout', 'setInterval', 'clearInterval', 'Date'],
@@ -66,16 +76,44 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
       screen.getByRole('link', { name: '‹ Sair' }).getAttribute('href'),
     ).toBe('/')
 
-    // Série 1/2: inicia e conclui pelo toque (antes era reinício silencioso).
+    // Série 1/2 do ÚLTIMO exercício: conclui pelo toque, sem descanso —
+    // a próxima série começa sozinha (timeout de 0 ms, disparado à parte
+    // porque efeitos passivos só descarregam ao sair do act).
     fireEvent.click(screen.getByText('Iniciar 15s'))
     expect(screen.getByText(/\(concluir\)/).textContent).toMatch(/15s/)
     fireEvent.click(screen.getByText(/\(concluir\)/))
-    expect(screen.getByTestId('rest-panel')).toBeTruthy()
+    expect(screen.queryByTestId('rest-panel')).toBeNull()
     expect(screen.getByText(/Série 2\/2/)).toBeTruthy()
+    act(() => {
+      vi.runOnlyPendingTimers()
+    })
+    fireEvent.click(screen.getByText(/\(concluir\)/))
 
-    // Descanso de 10 s termina → próxima série inicia sozinha.
-    // (Efeitos passivos só descarregam ao sair do act: é preciso
-    // disparar o timeout de 0 ms do auto-início explicitamente.)
+    // Última série concluída pelo toque → parabéns + log.
+    expect(screen.getByText('Parabéns! Treino concluído!')).toBeTruthy()
+    expect(repo.logs).toBe(1)
+  })
+
+  it('item não-último mantém o descanso de 10 s antes do auto-início', async () => {
+    // Descanso usa relógio de parede: Date precisa ser falso para avançar.
+    vi.useFakeTimers({
+      toFake: ['setTimeout', 'clearTimeout', 'setInterval', 'clearInterval', 'Date'],
+    })
+    const repo = stubRepo(PROFILE)
+    await act(async () => {
+      render(
+        <MemoryRouter>
+          <RunScreen session={TWO_ITEM_SESSION} repo={repo} />
+        </MemoryRouter>,
+      )
+    })
+
+    // Item 1/2 concluído → painel de descanso (não é o último exercício).
+    fireEvent.click(screen.getByText('Iniciar 15s'))
+    fireEvent.click(screen.getByText(/\(concluir\)/))
+    expect(screen.getByTestId('rest-panel')).toBeTruthy()
+
+    // Descanso termina → item 2/2 (último) inicia sozinho; concluir encerra.
     act(() => {
       vi.advanceTimersByTime(11_000)
     })
@@ -83,9 +121,7 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
       vi.runOnlyPendingTimers()
     })
     fireEvent.click(screen.getByText(/\(concluir\)/))
-
-    // Última série concluída pelo toque → tela de conclusão + log.
-    expect(screen.getByText('Treino concluído!')).toBeTruthy()
+    expect(screen.getByText('Parabéns! Treino concluído!')).toBeTruthy()
     expect(repo.logs).toBe(1)
   })
 })

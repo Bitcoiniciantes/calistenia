@@ -156,6 +156,7 @@ export function Ajustes({ repo }: { repo: Repository }) {
         </button>
         <p className="rounded border p-2 text-sm">
           A série conclui sozinha ao zerar (10–600 s). Descanso vazio = 30s.
+          No último exercício não há descanso: termina direto.
           Ficam salvos no aparelho: recarregar a tela não altera.
         </p>
       </section>

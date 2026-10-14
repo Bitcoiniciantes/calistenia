@@ -119,3 +119,8 @@
 ## 2026-10-14 — v4: botão Sair no treino
 
 - `RunScreen` ganha `‹ Sair` no topo (volta ao início). Sair no meio é seguro: a sessão é salva a cada mudança e voltar ao treino oferece "Retomar treino". Teste estendido em `RunScreenHold.test.tsx`.
+
+## 2026-10-14 — v5: último exercício sem descanso + parabéns direto
+
+- `handleComplete`: no último item, `restSecOverride = 0` (sem painel de descanso) e a próxima série auto-inicia; na última série vai direto para `Parabéns! Treino concluído!`.
+- Testes: `RunScreenHold.test.tsx` com 2 casos (último sem descanso; não-último com descanso). 43/43 testes; tsc/eslint/build limpos. E2E: último exercício concluído por toques até `Parabéns`, zero painéis de descanso.
