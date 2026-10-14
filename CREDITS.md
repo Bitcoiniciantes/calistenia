@@ -255,6 +255,15 @@ SHA-256 + tipo real verificados; bytes idênticos.
 Cobertura atual: **40 de 40** 🎉 (verificação de correspondência visual
 pendente nas 4 — registrar divergências se encontradas).
 
+## Alongamentos Yoga/Vôlei (`_inbox/Alongamento_Yoga/`, `_inbox/Alongamento_Voley/`)
+
+Ilustrações fornecidas pelo usuário (uso declarado em 14/10/2026), 2
+conferidas visualmente (gato-camelo, círculos com os braços) + 36 por nome na
+série uniforme. Incluídas SEM modificação (bytes idênticos), via
+`sync-media:local` com SHA-256 verificado (38 arquivos, `yoga-01..18.png` +
+`voley-01..20.png`, ~6,3 MB no precache). Tela `/alongamentos` com troca
+automática a cada 60 s.
+
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).
 - Ícones `public/icons/icon-192.png`, `icon-512.png`, `maskable-512.png` (+ `icon-source.svg`) — design original gerado neste projeto via `scripts/make-icons.mjs` (autoria própria, sem restrição).

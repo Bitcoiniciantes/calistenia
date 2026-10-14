@@ -85,12 +85,6 @@ export function Hoje({ repo }: { repo: Repository }) {
           </Link>
         )}
       </div>
-      <nav className="flex gap-3 text-sm underline">
-        <Link to="/biblioteca">Biblioteca</Link>
-        <Link to="/programas">Programas</Link>
-        <Link to="/progresso">Progresso</Link>
-        <Link to="/ajustes">Ajustes</Link>
-      </nav>
     </div>
   )
 }

@@ -79,3 +79,9 @@
 ## 2026-10-13 — novas3: 40 de 40 (projeto com imagens completo)
 
 - 4 integradas por nome, sem revisão de conteúdo (pedido expresso). Removida const PH (sem uso — tsc). check-refs 40/40 com crédito; 36/36 testes; build verde.
+
+## 2026-10-14 — Aba Alongamentos + nav inferior + Iniciar a série
+
+- Nova rota /alongamentos (Yoga 18 + Vôlei 20, 60 s por imagem com troca automática em ciclo, pausável, Wake Lock). BottomNav fixa (Início/Biblioteca/Programas/Alongar/Progresso/Ajustes) em todas as telas exceto treino/onboarding; nav antiga da Hoje removida.
+- RunScreen (reps): botão vira Iniciar a série (janela de 60 s, auto-conclui e pula a imagem); tocar de novo conclui antes; Parar cancela. Link Créditos de mídia removido do treino (seção saiu dos Ajustes; crédito segue no detalhe do exercício).
+- Testes novos do slideshow (avanço, pausa, grupo, reinício manual). 39/39 testes; tsc/eslint limpos.

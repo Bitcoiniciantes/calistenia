@@ -1,10 +1,12 @@
 import { useEffect, useMemo } from 'react'
-import { HashRouter, Link, Route, Routes, useParams } from 'react-router-dom'
+import { HashRouter, Link, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import { gateSession } from './data/gateSession'
 import { programById, programs } from './data/programs'
 import { DexieRepository } from './repo/dexieRepo'
 import type { Repository } from './repo/Repository'
+import { BottomNav } from './components/BottomNav'
 import { Ajustes } from './screens/Ajustes'
+import { Alongamentos } from './screens/Alongamentos'
 import { Biblioteca } from './screens/Biblioteca'
 import { DetalheExercicio } from './screens/DetalheExercicio'
 import { Hoje } from './screens/Hoje'
@@ -38,6 +40,29 @@ function TreinoDoPortao({ repo }: { repo: Repository }) {
   return <RunScreen session={gateSession} repo={repo} />
 }
 
+function Shell({ repo }: { repo: Repository }) {
+  const { pathname } = useLocation()
+  const semNav = pathname.startsWith('/execucao') || pathname.startsWith('/onboarding')
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Hoje repo={repo} />} />
+        <Route path="/execucao" element={<TreinoDoPortao repo={repo} />} />
+        <Route path="/execucao/:sessionId" element={<ExecucaoPorId repo={repo} />} />
+        <Route path="/biblioteca" element={<Biblioteca />} />
+        <Route path="/exercicio/:id" element={<DetalheExercicio />} />
+        <Route path="/programas" element={<Programas />} />
+        <Route path="/programas/:id" element={<DetalhePrograma repo={repo} />} />
+        <Route path="/progresso" element={<Progresso repo={repo} />} />
+        <Route path="/ajustes" element={<Ajustes repo={repo} />} />
+        <Route path="/alongamentos" element={<Alongamentos />} />
+        <Route path="/onboarding" element={<Onboarding repo={repo} />} />
+      </Routes>
+      {!semNav && <BottomNav />}
+    </>
+  )
+}
+
 export default function App() {
   const repo = useMemo(() => new DexieRepository(), [])
 
@@ -54,18 +79,7 @@ export default function App() {
 
   return (
     <HashRouter>
-      <Routes>
-        <Route path="/" element={<Hoje repo={repo} />} />
-        <Route path="/execucao" element={<TreinoDoPortao repo={repo} />} />
-        <Route path="/execucao/:sessionId" element={<ExecucaoPorId repo={repo} />} />
-        <Route path="/biblioteca" element={<Biblioteca />} />
-        <Route path="/exercicio/:id" element={<DetalheExercicio />} />
-        <Route path="/programas" element={<Programas />} />
-        <Route path="/programas/:id" element={<DetalhePrograma repo={repo} />} />
-        <Route path="/progresso" element={<Progresso repo={repo} />} />
-        <Route path="/ajustes" element={<Ajustes repo={repo} />} />
-        <Route path="/onboarding" element={<Onboarding repo={repo} />} />
-      </Routes>
+      <Shell repo={repo} />
     </HashRouter>
   )
 }

@@ -27,6 +27,9 @@ function formatCountdown(ms: number): string {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
 
+/** Janela de execução da série de repetições (s): ao zerar, avança sozinho. */
+const SERIES_SEC = 60
+
 /** Bipe curto de fim de descanso (WebAudio, sem arquivos). Opcional. */
 function beep() {
   try {
@@ -52,6 +55,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   const [resumeOffer, setResumeOffer] = useState<ActiveSession | null>(null)
   const [now, setNow] = useState(() => Date.now())
   const [holdLeft, setHoldLeft] = useState<number | null>(null)
+  const [seriesLeft, setSeriesLeft] = useState<number | null>(null)
   const [done, setDone] = useState(false)
   const [soundOn, setSoundOn] = useState(true)
   const wasResting = useRef(false)
@@ -148,6 +152,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   }, [active, finished, session, item])
 
   const handleComplete = useCallback(() => {
+    setSeriesLeft(null)
     setActive((prev) => {
       if (!prev) return prev
       const next = completeSet(prev, session)
@@ -178,6 +183,30 @@ export function RunScreen({ session, repo }: RunScreenProps) {
       return next
     })
   }, [repo, session])
+
+  // Timer da série (repetições): contagem regressiva; ao zerar, conclui
+  // a série e pula para a próxima imagem. Tocar de novo conclui antes.
+  useEffect(() => {
+    if (seriesLeft === null || seriesLeft <= 0) return
+    if (resting) return
+    const t = window.setInterval(
+      () =>
+        setSeriesLeft((v) => {
+          if (v === null) return v
+          if (v <= 1) {
+            window.clearInterval(t)
+            handleComplete()
+            return 0
+          }
+          return v - 1
+        }),
+      1000,
+    )
+    return () => window.clearInterval(t)
+  }, [seriesLeft, resting, handleComplete])
+
+  // Troca de exercício/série reinicia a janela da série (chamado nas transições).
+  const resetSeries = useCallback(() => setSeriesLeft(null), [])
 
   // Timer do hold: contagem regressiva; ao zerar, conclui a série.
   useEffect(() => {
@@ -340,13 +369,30 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             )}
           </div>
         ) : (
-          <button
-            type="button"
-            className="touch-target w-full rounded bg-green-700 px-4 text-lg font-bold text-white"
-            onClick={handleComplete}
-          >
-            Concluí a série
-          </button>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              className="touch-target w-full flex-1 rounded bg-green-700 px-4 text-lg font-bold text-white"
+              onClick={() =>
+                seriesLeft === null
+                  ? setSeriesLeft(SERIES_SEC)
+                  : handleComplete()
+              }
+            >
+              {seriesLeft === null
+                ? 'Iniciar a série'
+                : `${seriesLeft}s… (concluir)`}
+            </button>
+            {seriesLeft !== null && (
+              <button
+                type="button"
+                className="touch-target rounded border px-4"
+                onClick={() => setSeriesLeft(null)}
+              >
+                Parar
+              </button>
+            )}
+          </div>
         )}
 
         <div className="flex gap-2">
@@ -355,9 +401,12 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             disabled={!easier}
             title={easier ? `Trocar por ${easier.namePt}` : 'Sem regressão: já é o mais fácil'}
             className="touch-target flex-1 rounded border px-2 text-sm disabled:opacity-40"
-            onClick={() =>
-              easier && setActive((p) => (p ? substitute(p, session, easier.id) : p))
-            }
+            onClick={() => {
+              if (easier) {
+                resetSeries()
+                setActive((p) => (p ? substitute(p, session, easier.id) : p))
+              }
+            }}
           >
             {easier ? `Mais fácil: ${easier.namePt}` : 'Mais fácil (já é o mais fácil)'}
           </button>
@@ -366,9 +415,12 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             disabled={!harder}
             title={harder ? `Trocar por ${harder.namePt}` : 'Sem progressão: já é o mais difícil'}
             className="touch-target flex-1 rounded border px-2 text-sm disabled:opacity-40"
-            onClick={() =>
-              harder && setActive((p) => (p ? substitute(p, session, harder.id) : p))
-            }
+            onClick={() => {
+              if (harder) {
+                resetSeries()
+                setActive((p) => (p ? substitute(p, session, harder.id) : p))
+              }
+            }}
           >
             {harder ? `Mais difícil: ${harder.namePt}` : 'Mais difícil (já é o mais difícil)'}
           </button>
@@ -397,6 +449,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
                   setDone(true)
                 }
                 setHoldLeft(null)
+                setSeriesLeft(null)
                 return n
               })
             }
@@ -420,9 +473,6 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             ))}
           </ul>
         </details>
-        <Link to="/ajustes" className="touch-target text-xs underline opacity-70">
-          Créditos de mídia
-        </Link>
       </div>
     </div>
   )
