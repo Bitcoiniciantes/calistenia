@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import type { Repository } from '../repo/Repository'
 import type { UserProfile } from '../repo/types'
 
-/** Ajustes: perfil, lembrete de treino e tema. */
+/** Ajustes: perfil, lembrete de treino, tempos e tema. */
 export function Ajustes({ repo }: { repo: Repository }) {
   const [profile, setProfile] = useState<UserProfile | undefined>()
   const [reminder, setReminder] = useState('')
+  const [seriesSec, setSeriesSec] = useState('60')
+  const [restSec, setRestSec] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
     typeof document !== 'undefined' &&
     document.documentElement.dataset['theme'] === 'light'
@@ -19,6 +21,8 @@ export function Ajustes({ repo }: { repo: Repository }) {
     void repo.getProfile().then((p) => {
       setProfile(p)
       setReminder(p?.reminderTime ?? '')
+      setSeriesSec(String(p?.seriesSec ?? 60))
+      setRestSec(p?.restSecOverride === undefined ? '' : String(p.restSecOverride))
     })
   }, [repo])
 
@@ -43,6 +47,31 @@ export function Ajustes({ repo }: { repo: Repository }) {
     await repo.saveProfile(next)
     setProfile(next)
     setMsg('Lembrete salvo (só dentro do app).')
+  }
+
+  function clampSec(v: number, fallback: number): number {
+    if (!Number.isFinite(v)) return fallback
+    return Math.min(600, Math.max(10, Math.round(v)))
+  }
+
+  async function saveTimes() {
+    const base: UserProfile = profile ?? {
+      startingPoints: {},
+      equipment: [],
+      daysPerWeek: 3,
+      goal: 'strength',
+    }
+    const rest = restSec.trim() === '' ? undefined : clampSec(Number(restSec), 60)
+    const next = {
+      ...base,
+      seriesSec: clampSec(Number(seriesSec), 60),
+      restSecOverride: rest,
+    }
+    await repo.saveProfile(next)
+    setProfile(next)
+    setSeriesSec(String(next.seriesSec))
+    setRestSec(rest === undefined ? '' : String(rest))
+    setMsg('Tempos salvos.')
   }
 
   return (
@@ -89,6 +118,44 @@ export function Ajustes({ repo }: { repo: Repository }) {
           como um compromisso pessoal. O app não envia notificação — na
           Fase 1 não há push nem aviso com o app fechado; o horário fica
           salvo aqui para você consultar.
+        </p>
+      </section>
+
+      <section aria-label="Tempos" className="flex flex-col gap-2">
+        <h2 className="font-bold">Tempos</h2>
+        <label className="flex items-center gap-2 text-sm">
+          Série (segundos)
+          <input
+            type="number"
+            min={10}
+            max={600}
+            value={seriesSec}
+            onChange={(e) => setSeriesSec(e.target.value)}
+            className="touch-target w-24 rounded border px-2"
+          />
+        </label>
+        <label className="flex items-center gap-2 text-sm">
+          Descanso (segundos)
+          <input
+            type="number"
+            min={10}
+            max={600}
+            placeholder="do programa"
+            value={restSec}
+            onChange={(e) => setRestSec(e.target.value)}
+            className="touch-target w-24 rounded border px-2"
+          />
+        </label>
+        <button
+          type="button"
+          onClick={() => void saveTimes()}
+          className="touch-target rounded border px-4 text-sm"
+        >
+          Salvar tempos
+        </button>
+        <p className="rounded border p-2 text-sm">
+          A série conclui sozinha ao zerar (10–600 s). Descanso vazio usa o
+          tempo do programa.
         </p>
       </section>
 

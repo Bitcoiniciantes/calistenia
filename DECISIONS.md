@@ -85,3 +85,7 @@
 - Nova rota /alongamentos (Yoga 18 + Vôlei 20, 60 s por imagem com troca automática em ciclo, pausável, Wake Lock). BottomNav fixa (Início/Biblioteca/Programas/Alongar/Progresso/Ajustes) em todas as telas exceto treino/onboarding; nav antiga da Hoje removida.
 - RunScreen (reps): botão vira Iniciar a série (janela de 60 s, auto-conclui e pula a imagem); tocar de novo conclui antes; Parar cancela. Link Créditos de mídia removido do treino (seção saiu dos Ajustes; crédito segue no detalhe do exercício).
 - Testes novos do slideshow (avanço, pausa, grupo, reinício manual). 39/39 testes; tsc/eslint limpos.
+
+## 2026-10-14 — Tempos ajustáveis + Descanse
+
+- Perfil: seriesSec (padrão 60) e restSecOverride (vazio = programa). Ajustes ganha seção Tempos (10–600 s). RunScreen: painel de descanso com título Descanse…; botão Iniciar a série (Xs) usa configurado; descanso usa override. completeSet ganha 4º parâmetro opcional (testes antigos intactos). 40/40 testes.

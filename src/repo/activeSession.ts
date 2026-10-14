@@ -52,11 +52,13 @@ function restUntil(nowIso: string, restSec: number): string {
 /**
  * Marca a série atual como concluída e avança.
  * Descanso usa timestamp absoluto (restEndsAt), nunca contador em memória.
+ * restSecOverride (do perfil) vence o descanso do programa quando definido.
  */
 export function completeSet(
   prev: ActiveSession,
   session: Session,
   nowIso: string = new Date().toISOString(),
+  restSecOverride?: number,
 ): ActiveSession {
   const next: ActiveSession = structuredClone(prev)
   const item = session.items[next.currentItemIndex]
@@ -68,7 +70,7 @@ export function completeSet(
     done: true,
   })
   // Descanso após a série concluída.
-  next.restEndsAt = restUntil(nowIso, item.restSec)
+  next.restEndsAt = restUntil(nowIso, restSecOverride ?? item.restSec)
 
   if (next.currentSet < item.sets) {
     next.currentSet += 1

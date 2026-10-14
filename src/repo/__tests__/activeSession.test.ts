@@ -27,6 +27,15 @@ describe('ActiveSession: helpers puros', () => {
     expect(restRemainingMs(after, Date.parse('2026-10-13T10:02:00.000Z'))).toBe(0)
   })
 
+  it('override de descanso vence o programa; sem override usa o programa', () => {
+    const t0 = '2026-10-13T10:00:00.000Z'
+    const started = startSessionWithEntries(gateSession, t0)
+    const com = completeSet(started, gateSession, t0, 30)
+    expect(com.restEndsAt).toBe('2026-10-13T10:00:30.000Z')
+    const sem = completeSet(started, gateSession, t0)
+    expect(sem.restEndsAt).toBe('2026-10-13T10:01:00.000Z')
+  })
+
   it('substituição troca o exercício atual e registra o mapa', () => {
     const started = startSessionWithEntries(gateSession)
     const sub = substitute(started, gateSession, 'pushup-wide')

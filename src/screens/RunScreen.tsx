@@ -28,7 +28,7 @@ function formatCountdown(ms: number): string {
 }
 
 /** Janela de execução da série de repetições (s): ao zerar, avança sozinho. */
-const SERIES_SEC = 60
+const DEFAULT_SERIES_SEC = 60
 
 /** Bipe curto de fim de descanso (WebAudio, sem arquivos). Opcional. */
 function beep() {
@@ -56,6 +56,8 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   const [now, setNow] = useState(() => Date.now())
   const [holdLeft, setHoldLeft] = useState<number | null>(null)
   const [seriesLeft, setSeriesLeft] = useState<number | null>(null)
+  const [seriesSec, setSeriesSec] = useState(DEFAULT_SERIES_SEC)
+  const [restOverride, setRestOverride] = useState<number | undefined>()
   const [done, setDone] = useState(false)
   const [soundOn, setSoundOn] = useState(true)
   const wasResting = useRef(false)
@@ -91,7 +93,10 @@ export function RunScreen({ session, repo }: RunScreenProps) {
       }
     })
     void repo.getProfile().then((p) => {
-      if (!cancelled && p?.soundOn === false) setSoundOn(false)
+      if (cancelled) return
+      if (p?.soundOn === false) setSoundOn(false)
+      if (p?.seriesSec) setSeriesSec(p.seriesSec)
+      setRestOverride(p?.restSecOverride)
     })
     return () => {
       cancelled = true
@@ -155,7 +160,12 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     setSeriesLeft(null)
     setActive((prev) => {
       if (!prev) return prev
-      const next = completeSet(prev, session)
+      const next = completeSet(
+        prev,
+        session,
+        new Date().toISOString(),
+        restOverride,
+      )
       if (isFinished(next, session)) {
         const durationSec = Math.max(
           0,
@@ -182,7 +192,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
       setHoldLeft(null)
       return next
     })
-  }, [repo, session])
+  }, [repo, session, restOverride])
 
   // Timer da série (repetições): contagem regressiva; ao zerar, conclui
   // a série e pula para a próxima imagem. Tocar de novo conclui antes.
@@ -325,6 +335,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
 
         {resting ? (
           <div className="rounded border p-3 text-center" data-testid="rest-panel">
+            <p className="text-lg font-bold">Descanse…</p>
             <p className="text-2xl font-bold" data-testid="rest-countdown">
               {formatCountdown(restMs)}
             </p>
@@ -375,12 +386,12 @@ export function RunScreen({ session, repo }: RunScreenProps) {
               className="touch-target w-full flex-1 rounded bg-green-700 px-4 text-lg font-bold text-white"
               onClick={() =>
                 seriesLeft === null
-                  ? setSeriesLeft(SERIES_SEC)
+                  ? setSeriesLeft(seriesSec)
                   : handleComplete()
               }
             >
               {seriesLeft === null
-                ? 'Iniciar a série'
+                ? `Iniciar a série (${seriesSec}s)`
                 : `${seriesLeft}s… (concluir)`}
             </button>
             {seriesLeft !== null && (
