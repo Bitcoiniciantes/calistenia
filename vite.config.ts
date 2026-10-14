@@ -3,10 +3,14 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// Base configurável: GitHub Pages usa /calistenia/ (padrão); Cloudflare raiz usa /.
+// No Cloudflare, definir a variável de ambiente BASE_PATH=/ .
+const base = process.env.BASEPATH ?? '/calistenia/'
+
 // https://vite.dev/config/
 export default defineConfig({
   // Site de projeto no GitHub Pages: https://bitcoiniciantes.github.io/calistenia/
-  base: '/calistenia/',
+  base,
   // Build de publicação vai para docs/ (Pages serve a branch main).
   build: { outDir: 'docs' },
   plugins: [
@@ -23,8 +27,8 @@ export default defineConfig({
         theme_color: '#16171d',
         background_color: '#ffffff',
         display: 'standalone',
-        start_url: '/calistenia/',
-        scope: '/calistenia/',
+        start_url: base,
+        scope: base,
         icons: [
           {
             src: 'icons/icon-192.png',
