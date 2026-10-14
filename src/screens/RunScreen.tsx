@@ -377,9 +377,13 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             <button
               type="button"
               className="touch-target flex-1 rounded bg-green-700 px-4 text-lg font-bold text-white"
-              onClick={() => setHoldLeft(item.holdSec ?? 30)}
+              onClick={() =>
+                holdLeft === null
+                  ? setHoldLeft(item.holdSec ?? 30)
+                  : handleComplete()
+              }
             >
-              {holdLeft === null ? `Iniciar ${item.holdSec ?? 0}s` : `${holdLeft}s…`}
+              {holdLeft === null ? `Iniciar ${item.holdSec ?? 0}s` : `${holdLeft}s… (concluir)`}
             </button>
             {holdLeft !== null && (
               <button

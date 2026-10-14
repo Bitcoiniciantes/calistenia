@@ -94,3 +94,9 @@
 
 - Fim do descanso inicia sozinho o timer da próxima série (reps: seriesSec; hold: holdSec). Imagem já avança na conclusão da série; descanso mostra Descanse… + próximo. Verificado em navegador (série 10s/descanso 10s auto-iniciou).
 - Padrões: série 30s, descanso 30s (Ajustes > Tempos; descanso vazio = 30s). Tempos ficam no perfil Dexie: recarregar não altera.
+
+## 2026-10-14 — Hold: toque no timer rodando conclui (não reinicia)
+
+- Causa do treino que nunca encerrava: no hold, tocar o botão com o timer rodando chamava setHoldLeft(holdSec) — reinício silencioso na mesma série. Quem vinha do fluxo de reps (toque = concluir) ficava em loop, inclusive na última série.
+- Botão de hold agora igual ao de reps: rodando mostra `Xs… (concluir)` e o toque conclui a série. `Parar` segue cancelando.
+- Regressão: `src/screens/__tests__/RunScreenHold.test.tsx` (toque conclui 1/2 → Descanse…; auto-início; toque na 2/2 → Treino concluído! + log). 41/41 testes. Verificado em navegador (inic-b: toque concluiu e avançou para Série 2/3).
