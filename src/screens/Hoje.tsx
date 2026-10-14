@@ -109,10 +109,10 @@ export function Hoje({ repo }: { repo: Repository }) {
   })
 
   return (
-    <div className="app-shell gap-4 p-4">
-      <div className="flex items-baseline justify-between">
+    <div className="app-shell gap-3 p-4">
+      <div className="flex items-center justify-between gap-2">
         <div>
-          <h1 className="screen-title">Bora treinar</h1>
+          <h1 className="text-2xl leading-tight font-bold">Bora treinar</h1>
           <p className="caption capitalize">{todayLong}</p>
         </div>
         <span
@@ -141,7 +141,7 @@ export function Hoje({ repo }: { repo: Repository }) {
             title={
               d.trained ? 'Treinou' : d.isFuture ? 'Dia futuro' : 'Sem treino'
             }
-            className={`flex flex-1 flex-col items-center gap-0.5 rounded-xl py-1.5 ${
+            className={`flex flex-1 flex-col items-center gap-0 rounded-xl py-1 ${
               d.isFuture ? 'opacity-40' : ''
             } ${d.isToday ? 'ring-2' : ''}`}
             style={
@@ -187,7 +187,7 @@ export function Hoje({ repo }: { repo: Repository }) {
                 : 'Guia visual com exercícios de calistenia'
             }
             loading="lazy"
-            className="aspect-[16/9] w-full object-cover"
+            className="h-36 w-full object-cover"
           />
           <div
             aria-hidden="true"
@@ -197,7 +197,7 @@ export function Hoje({ repo }: { repo: Repository }) {
                 'linear-gradient(180deg, transparent 30%, rgba(0,0,0,.78))',
             }}
           />
-          <div className="absolute inset-x-0 bottom-0 p-4">
+          <div className="absolute inset-x-0 bottom-0 p-3">
             <p className="card-title text-white">{session?.title ?? 'Carregando…'}</p>
             <p className="text-sm text-white/80">{program.namePt}</p>
             {session && (
@@ -215,7 +215,7 @@ export function Hoje({ repo }: { repo: Repository }) {
             )}
           </div>
         </div>
-        <div className="flex flex-col gap-2 p-4">
+        <div className="flex flex-col gap-1.5 p-3">
           {session &&
             (todayLog ? (
               <>
@@ -228,6 +228,7 @@ export function Hoje({ repo }: { repo: Repository }) {
                 <Link
                   to={`/execucao/${session.id}`}
                   className="btn-secondary w-full"
+                  style={{ minHeight: 48 }}
                 >
                   Refazer treino
                 </Link>
@@ -236,6 +237,7 @@ export function Hoje({ repo }: { repo: Repository }) {
               <Link
                 to={`/execucao/${session.id}`}
                 className="btn-primary w-full"
+                style={{ minHeight: 48 }}
               >
                 <svg
                   viewBox="0 0 24 24"
