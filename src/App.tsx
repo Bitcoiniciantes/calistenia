@@ -5,6 +5,7 @@ import { programById, programs } from './data/programs'
 import { DexieRepository } from './repo/dexieRepo'
 import type { Repository } from './repo/Repository'
 import { BottomNav } from './components/BottomNav'
+import { AppHeader } from './components/AppHeader'
 import { Ajustes } from './screens/Ajustes'
 import { Alongamentos } from './screens/Alongamentos'
 import { Biblioteca } from './screens/Biblioteca'
@@ -45,6 +46,7 @@ function Shell({ repo }: { repo: Repository }) {
   const semNav = pathname.startsWith('/execucao') || pathname.startsWith('/onboarding')
   return (
     <>
+      {!semNav && <AppHeader />}
       <Routes>
         <Route path="/" element={<Hoje repo={repo} />} />
         <Route path="/execucao" element={<TreinoDoPortao repo={repo} />} />

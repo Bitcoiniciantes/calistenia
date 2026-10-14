@@ -1,14 +1,37 @@
 @import "tailwindcss";
 
+/* Etapa 1 — fundação visual: tokens dark-first (tema padrão do app). */
 :root {
   color-scheme: light dark;
-  --app-bg: #ffffff;
-  --app-fg: #111111;
+  --app-bg: #0e1013;
+  --app-fg: #f2f4f7;
+  --surface: #161a20;
+  --surface-2: #1d222a;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f2f4f7;
+  --text-2: #9aa3af;
+  --green: #1db954;
+  --green-dark: #128a3e;
+  --orange: #ff8a1f;
+  --tabbar-bg: rgba(22, 26, 32, 0.88);
+  --radius-card: 16px;
+  --radius-btn: 12px;
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-:root[data-theme="dark"] {
-  --app-bg: #16171d;
-  --app-fg: #f3f4f6;
+:root[data-theme="light"] {
+  --app-bg: #f6f7f9;
+  --app-fg: #14181f;
+  --surface: #ffffff;
+  --surface-2: #eceff3;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #14181f;
+  --text-2: #5b6470;
+  --green: #1db954;
+  --green-dark: #128a3e;
+  --orange: #e56f0a;
+  --tabbar-bg: rgba(255, 255, 255, 0.88);
+  --shadow-soft: 0 8px 24px rgba(20, 24, 31, 0.1);
 }
 
 body {
@@ -22,6 +45,185 @@ body {
 :focus-visible {
   outline: 3px solid #15803d;
   outline-offset: 2px;
+}
+
+/* Tipografia das telas (Etapa 2 aplica nas telas; base pronta aqui) */
+.screen-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+}
+.card-title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+.caption {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Superfícies e controles */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-btn);
+  background: linear-gradient(180deg, var(--green), var(--green-dark));
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 150ms ease;
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 150ms ease;
+}
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+.chip {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: var(--surface-2);
+  color: var(--text);
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+.chip[aria-pressed="true"],
+.chip[aria-selected="true"] {
+  background: var(--green);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Cabeçalho das telas principais (título + engrenagem de Ajustes) */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  padding-top: max(12px, env(safe-area-inset-top));
+  background: var(--tabbar-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.app-header-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-btn);
+  color: var(--text-2);
+}
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Tab bar inferior: ícone + rótulo, aba ativa em pílula verde */
+.tabbar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 8px 4px 0;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--tabbar-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border);
+}
+.tab {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: var(--radius-btn);
+}
+.tab-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--text-2);
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+.tab-pill svg {
+  width: 22px;
+  height: 22px;
+}
+.tab-pill span {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.tab-active .tab-pill {
+  background: rgba(29, 185, 84, 0.16);
+  color: var(--green);
+}
+.tabbar-spacer {
+  height: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-secondary,
+  .chip,
+  .tab-pill {
+    transition: none;
+  }
 }
 
 /* Shell mobile-first: em 390 px ocupa a tela; em tela larga centraliza ~480 px */

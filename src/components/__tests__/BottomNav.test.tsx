@@ -3,19 +3,30 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import { cleanup, render, screen } from '@testing-library/react'
 import { BottomNav } from '../BottomNav'
-import { APP_VERSION } from '../../version'
 
 afterEach(() => {
   cleanup()
 })
 
-describe('BottomNav: versão visível no rodapé', () => {
-  it('mostra o APP_VERSION para saber se a página atualizou', () => {
+describe('BottomNav: tab bar com ícone + rótulo', () => {
+  it('5 abas, sem Ajustes (foi para a engrenagem do cabeçalho)', () => {
     render(
       <MemoryRouter>
         <BottomNav />
       </MemoryRouter>,
     )
-    expect(screen.getByTestId('app-version').textContent).toBe(APP_VERSION)
+    for (const label of [
+      'Início',
+      'Biblioteca',
+      'Programas',
+      'Alongar',
+      'Progresso',
+    ]) {
+      expect(screen.getByText(label)).toBeTruthy()
+    }
+    expect(screen.queryByText('Ajustes')).toBeNull()
+    expect(
+      screen.getByRole('navigation', { name: 'Principal' }),
+    ).toBeTruthy()
   })
 })
