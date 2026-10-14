@@ -4,6 +4,27 @@ import type { Repository } from '../repo/Repository'
 import type { UserProfile } from '../repo/types'
 import { APP_VERSION } from '../version'
 
+const GOAL_PT: Record<string, string> = {
+  strength: 'Força',
+  muscle: 'Músculo',
+  skills: 'Skills',
+  fatloss: 'Definição',
+}
+
+const EQUIP_PT: Record<string, string> = {
+  none: 'Sem equipamento',
+  bar: 'Barra',
+  parallettes: 'Paralelas',
+  rings: 'Argolas',
+  bands: 'Elásticos',
+}
+
+function sectionTitle(label: string) {
+  return (
+    <h2 className="caption font-bold tracking-wide uppercase">{label}</h2>
+  )
+}
+
 /** Ajustes: perfil, lembrete de treino, tempos e tema. */
 export function Ajustes({ repo }: { repo: Repository }) {
   const [profile, setProfile] = useState<UserProfile | undefined>()
@@ -17,7 +38,8 @@ export function Ajustes({ repo }: { repo: Repository }) {
       ? 'light'
       : 'dark',
   )
-  const [msg, setMsg] = useState('')
+  const [msgLembrete, setMsgLembrete] = useState('')
+  const [msgTempos, setMsgTempos] = useState('')
 
   useEffect(() => {
     void repo.getProfile().then((p) => {
@@ -39,17 +61,22 @@ export function Ajustes({ repo }: { repo: Repository }) {
     }
   }
 
+  function baseProfile(): UserProfile {
+    return (
+      profile ?? {
+        startingPoints: {},
+        equipment: [],
+        daysPerWeek: 3,
+        goal: 'strength',
+      }
+    )
+  }
+
   async function saveReminder() {
-    const base: UserProfile = profile ?? {
-      startingPoints: {},
-      equipment: [],
-      daysPerWeek: 3,
-      goal: 'strength',
-    }
-    const next = { ...base, reminderTime: reminder || undefined }
+    const next = { ...baseProfile(), reminderTime: reminder || undefined }
     await repo.saveProfile(next)
     setProfile(next)
-    setMsg('Lembrete salvo (só dentro do app).')
+    setMsgLembrete('Salvo ✓')
   }
 
   function clampSec(v: number, fallback: number): number {
@@ -57,13 +84,17 @@ export function Ajustes({ repo }: { repo: Repository }) {
     return Math.min(600, Math.max(10, Math.round(v)))
   }
 
+  function step(
+    current: string,
+    setter: (v: string) => void,
+    delta: number,
+  ) {
+    const base = current.trim() === '' ? 30 : Number(current)
+    setter(String(clampSec((Number.isFinite(base) ? base : 30) + delta, 30)))
+  }
+
   async function saveTimes() {
-    const base: UserProfile = profile ?? {
-      startingPoints: {},
-      equipment: [],
-      daysPerWeek: 3,
-      goal: 'strength',
-    }
+    const base = baseProfile()
     const rest = restSec.trim() === '' ? undefined : clampSec(Number(restSec), 30)
     const next = {
       ...base,
@@ -76,138 +107,178 @@ export function Ajustes({ repo }: { repo: Repository }) {
     setSeriesSec(String(next.seriesSec))
     setRestSec(rest === undefined ? '' : String(rest))
     setAlongSec(String(next.alongamentoSec))
-    setMsg('Tempos salvos.')
+    setMsgTempos('Salvo ✓')
   }
 
-  return (
-    <div className="app-shell gap-4 p-4">
-      <h1 className="text-xl font-bold">Ajustes</h1>
-      {msg && (
-        <p role="status" className="rounded border p-2 text-sm">
-          {msg}
-        </p>
-      )}
+  function timeField(
+    label: string,
+    value: string,
+    setter: (v: string) => void,
+    placeholder?: string,
+  ) {
+    return (
+      <div className="flex flex-col gap-1">
+        <label htmlFor={`tempo-${label}`} className="text-sm font-medium">
+          {label}
+        </label>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => step(value, setter, -5)}
+            aria-label={`Diminuir ${label}`}
+            className="touch-target w-11 rounded-xl text-lg font-bold"
+            style={{ background: 'var(--surface-2)' }}
+          >
+            −
+          </button>
+          <input
+            id={`tempo-${label}`}
+            type="number"
+            min={10}
+            max={600}
+            placeholder={placeholder}
+            value={value}
+            onChange={(e) => setter(e.target.value)}
+            className="touch-target tnum w-full rounded-xl border px-2 text-center"
+          />
+          <button
+            type="button"
+            onClick={() => step(value, setter, 5)}
+            aria-label={`Aumentar ${label}`}
+            className="touch-target w-11 rounded-xl text-lg font-bold"
+            style={{ background: 'var(--surface-2)' }}
+          >
+            +
+          </button>
+          <span className="caption w-4">s</span>
+        </div>
+      </div>
+    )
+  }
 
-      <section aria-label="Perfil">
-        <h2 className="font-bold">Perfil</h2>
-        <p className="text-sm">
-          Dias/semana: {profile?.daysPerWeek ?? '—'} · Objetivo:{' '}
-          {profile?.goal ?? '—'} · Equipamento:{' '}
-          {profile?.equipment?.join(', ') || 'nenhum'}
-        </p>
-        <Link to="/onboarding" className="text-sm underline">
+  const equipmentPt =
+    profile?.equipment?.map((e) => EQUIP_PT[e] ?? e).join(', ') || '—'
+
+  return (
+    <div className="app-shell gap-5 p-4">
+      <h1 className="screen-title">Ajustes</h1>
+
+      <section aria-label="Perfil" className="flex flex-col gap-2">
+        {sectionTitle('Perfil')}
+        <div className="card row-divide p-4">
+          <div className="flex justify-between gap-2 py-1.5 text-sm">
+            <span className="opacity-70">Objetivo</span>
+            <span className="font-semibold">
+              {profile?.goal ? (GOAL_PT[profile.goal] ?? profile.goal) : '—'}
+            </span>
+          </div>
+          <div className="flex justify-between gap-2 py-1.5 text-sm">
+            <span className="opacity-70">Equipamento</span>
+            <span className="text-right font-semibold">{equipmentPt}</span>
+          </div>
+          <div className="flex justify-between gap-2 py-1.5 text-sm">
+            <span className="opacity-70">Frequência</span>
+            <span className="font-semibold">
+              {profile?.daysPerWeek !== undefined
+                ? `${profile.daysPerWeek} dias por semana`
+                : '—'}
+            </span>
+          </div>
+        </div>
+        <Link to="/onboarding" className="btn-secondary">
           Refazer onboarding
         </Link>
       </section>
 
       <section aria-label="Lembrete" className="flex flex-col gap-2">
-        <h2 className="font-bold">Lembrete</h2>
-        <label className="flex items-center gap-2 text-sm">
-          Horário
+        {sectionTitle('Lembrete')}
+        <div className="card flex flex-col gap-3 p-4">
+          <label htmlFor="lembrete-horario" className="text-sm font-medium">
+            Horário
+          </label>
           <input
+            id="lembrete-horario"
             type="time"
             value={reminder}
             onChange={(e) => setReminder(e.target.value)}
-            className="touch-target rounded border px-2"
+            className="touch-target tnum rounded-xl border px-3"
           />
-        </label>
-        <button
-          type="button"
-          onClick={() => void saveReminder()}
-          className="touch-target rounded border px-4 text-sm"
-        >
-          Salvar lembrete
-        </button>
-        <p className="rounded border p-2 text-sm">
-          Para que serve: guarda o horário em que você pretende treinar,
-          como um compromisso pessoal. O app não envia notificação — na
-          Fase 1 não há push nem aviso com o app fechado; o horário fica
-          salvo aqui para você consultar.
-        </p>
+          <button
+            type="button"
+            onClick={() => void saveReminder()}
+            className="btn-primary"
+          >
+            Salvar lembrete
+          </button>
+          {msgLembrete && (
+            <p role="status" className="text-sm font-bold" style={{ color: 'var(--green)' }}>
+              {msgLembrete}
+            </p>
+          )}
+          <p className="caption">
+            Compromisso pessoal: o app não envia notificação, o horário fica
+            salvo aqui para você consultar.
+          </p>
+        </div>
       </section>
 
       <section aria-label="Tempos" className="flex flex-col gap-2">
-        <h2 className="font-bold">Tempos</h2>
-        <label className="flex items-center gap-2 text-sm">
-          Série (segundos)
-          <input
-            type="number"
-            min={10}
-            max={600}
-            value={seriesSec}
-            onChange={(e) => setSeriesSec(e.target.value)}
-            className="touch-target w-24 rounded border px-2"
-          />
-        </label>
-        <label className="flex items-center gap-2 text-sm">
-          Descanso (segundos)
-          <input
-            type="number"
-            min={10}
-            max={600}
-            placeholder="padrão 30s"
-            value={restSec}
-            onChange={(e) => setRestSec(e.target.value)}
-            className="touch-target w-24 rounded border px-2"
-          />
-        </label>
-        <label className="flex items-center gap-2 text-sm">
-          Alongamento (segundos)
-          <input
-            type="number"
-            min={10}
-            max={600}
-            value={alongSec}
-            onChange={(e) => setAlongSec(e.target.value)}
-            className="touch-target w-24 rounded border px-2"
-          />
-        </label>
-        <button
-          type="button"
-          onClick={() => void saveTimes()}
-          className="touch-target rounded border px-4 text-sm"
-        >
-          Salvar tempos
-        </button>
-        <p className="rounded border p-2 text-sm">
-          A série conclui sozinha ao zerar (10–600 s). Descanso vazio = 30s.
-          No último exercício não há descanso: termina direto. Cada imagem
-          do alongamento segue o tempo acima (padrão 30s).
-          Ficam salvos no aparelho: recarregar a tela não altera.
-        </p>
+        {sectionTitle('Tempos')}
+        <div className="card flex flex-col gap-4 p-4">
+          {timeField('Série', seriesSec, setSeriesSec)}
+          {timeField('Descanso', restSec, setRestSec, 'padrão 30s')}
+          {timeField('Alongamento', alongSec, setAlongSec)}
+          <button
+            type="button"
+            onClick={() => void saveTimes()}
+            className="btn-primary"
+          >
+            Salvar tempos
+          </button>
+          {msgTempos && (
+            <p role="status" className="text-sm font-bold" style={{ color: 'var(--green)' }}>
+              {msgTempos}
+            </p>
+          )}
+          <p className="caption">
+            10–600 s. Descanso vazio = 30s; no último exercício não há
+            descanso. Ficam salvos no aparelho.
+          </p>
+        </div>
       </section>
 
-      <section aria-label="Limites">
-        <h2 className="font-bold">Limites</h2>
-        <ul className="list-disc pl-5 text-sm">
-          <li>Exige o primeiro carregamento online; depois funciona offline.</li>
-          <li>
-            No iOS, instalação, precache, Wake Lock e notificações podem variar.
-          </li>
-        </ul>
+      <section aria-label="Limites" className="flex flex-col gap-2">
+        {sectionTitle('Limites')}
+        <div className="card p-4">
+          <ul className="caption list-disc pl-5">
+            <li>Exige o primeiro carregamento online; depois funciona offline.</li>
+            <li>
+              No iOS, instalação, precache, Wake Lock e notificações podem variar.
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <section aria-label="Tema">
-        <h2 className="font-bold">Tema</h2>
+      <section aria-label="Tema" className="flex flex-col gap-2">
+        {sectionTitle('Tema')}
         <button
           type="button"
           onClick={() => applyTheme(theme === 'dark' ? 'light' : 'dark')}
           aria-pressed={theme === 'dark'}
-          className="touch-target rounded border px-4 text-sm"
+          className="btn-secondary"
         >
           Tema: {theme === 'dark' ? 'escuro' : 'claro'} (trocar)
         </button>
       </section>
 
-      <section aria-label="Versão">
-        <h2 className="font-bold">Versão</h2>
-        <p className="text-sm" data-testid="app-version-ajustes">
-          {APP_VERSION} — se não mudou após publicar, recarregue a página
-          (o modo offline pode segurar a versão anterior).
+      <section aria-label="Versão" className="flex flex-col gap-2">
+        {sectionTitle('Versão')}
+        <p className="caption" data-testid="app-version-ajustes">
+          {APP_VERSION} · Funciona offline após o primeiro carregamento.
         </p>
       </section>
 
-      <Link to="/" className="text-sm underline">
+      <Link to="/" className="text-center text-sm underline opacity-80">
         Voltar ao início
       </Link>
     </div>

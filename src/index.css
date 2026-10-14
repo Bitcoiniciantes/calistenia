@@ -217,6 +217,11 @@ body {
   height: 8px;
 }
 
+/* Linhas divisórias de cards (estilo iOS) */
+.row-divide > * + * {
+  border-top: 1px solid var(--border);
+}
+
 /* Esqueleto de carregamento de imagem */
 .skeleton {
   background: linear-gradient(
