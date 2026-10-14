@@ -221,6 +221,25 @@ as mãos em paralelas de chão (push-up bars), NÃO mergulho em paralelas
 
 Cobertura atual: **33 de 40** exercícios com demonstração.
 
+## Pasta novas2 (`_inbox/novas2/`, 13/10)
+
+Mesma origem IA e procedimento (SHA-256 + tipo real + inspeção visual das 7).
+Integradas 3 (cadeira, pernas pendurada, front lever — este troca o último
+embed TODO por local); `n2-frontlever.jpg` traz legenda queimada no próprio
+cartão (duplica o título do app, sem prejuízo). REJEITADAS 4 (não mostram o
+exercício): `02_mergulho…` (ajoelhada sem barras), `05_pistol_assistido`
+(afundo segurando barras), `06_pistol` (afundo), `08_hollow_rocks` (sentada
+inclinada com joelhos dobrados, não hollow).
+
+| Arquivo `_inbox/novas2/` → local | Exercício | SHA-256 | Bytes |
+|---|---|---|---|
+| `04_agachamento_na_cadeira.png` → `n2-cadeira.png` | chair-squat (única) | `5267eb3d…cace1` | 104911 |
+| `07_elevacao_de_pernas.png` → `n2-pernas.png` | leg-raises (única, pendurada) | `465b92bd…128e` | 114434 |
+| `frontlevergrupado.png.jpg` → `n2-frontlever.jpg` | tuck-front-lever (única; JPG real) | `d86ce6a5…34f8` | 37748 |
+
+Cobertura atual: **36 de 40**. Faltam 4: dips-parallettes, assisted-pistol,
+pistol, hollow-rocks.
+
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).
 - Ícones `public/icons/icon-192.png`, `icon-512.png`, `maskable-512.png` (+ `icon-source.svg`) — design original gerado neste projeto via `scripts/make-icons.mjs` (autoria própria, sem restrição).

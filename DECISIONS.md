@@ -71,3 +71,7 @@
 ## 2026-10-13 — pasta Novas (33 de 40)
 
 - 3 de 4 integradas após inspeção visual (parede, ampla, muscle-up — este troca embed TODO por local). 03 (dips) REJEITADA: imagem mostra flexão com mãos em paralelas de chão, não mergulho. PENDING_WIDE removido (era o único uso). Faltam 7 para 100%: dips-parallettes, chair-squat, assisted-pistol, pistol, leg-raises (pendurada), hollow-rocks, tuck-front-lever (embed). check-refs 33/33; 36/36 testes.
+
+## 2026-10-13 — novas2 (36 de 40, faltam 4)
+
+- 3 de 7 integradas (cadeira, pernas pendurada, front lever — zera os TODOs de embed). 4 rejeitadas por não mostrarem o exercício (02 ajoelhada, 05/06 afundos, 08 sentada). Faltam: dips-parallettes, assisted-pistol, pistol, hollow-rocks. check-refs 36/36; 36/36 testes.

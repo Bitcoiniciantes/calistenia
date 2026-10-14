@@ -980,6 +980,51 @@
       "bytes": 94996,
       "approved": true,
       "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "novas2/04_agachamento_na_cadeira.png",
+      "local": "n2-cadeira.png",
+      "inbox": "novas2/04_agachamento_na_cadeira.png",
+      "exerciseId": "chair-squat",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "5267eb3de734bc51b8920f737f655a3301256afe68f49d0fe851a939342cace1",
+      "bytes": 104911,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "novas2/07_elevacao_de_pernas.png",
+      "local": "n2-pernas.png",
+      "inbox": "novas2/07_elevacao_de_pernas.png",
+      "exerciseId": "leg-raises",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "465b92bdf9764a3bc27da417a64e7b923cac5a84c8f728e9b7794287906c128e",
+      "bytes": 114434,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "novas2/frontlevergrupado.png.jpg",
+      "local": "n2-frontlever.jpg",
+      "inbox": "novas2/frontlevergrupado.png.jpg",
+      "exerciseId": "tuck-front-lever",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "d86ce6a58e34dc74013aeb76d73050040f89800a4cc30f319dce5cc61d3348fe",
+      "bytes": 37748,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
     }
   ]
 }
