@@ -177,6 +177,35 @@ ou incompatíveis (`05` deitado, `08` prancha alta).
 | `04…` → `escalador-700.png` | mountain-climbers (única) | `fe541358…7724` | 269009 |
 | `07…` → `lsit-700.png` | l-sit (única) | `9cd42408…1efa7` | 221273 |
 
+## Barras + mobilidade (`_inbox/barras/`, 13/10)
+
+Mesma origem IA e procedimento (SHA-256 + tipo real + inspeção visual das
+13). Preenchem o pilar pull inteiro, arqueiro/pseudo-planche e a mobilidade
+completa. `03_rotacao_de_tronco.png` mostra a postura inicial (neutra), não o
+giro — aceita como ilustração da posição-base, com a ressalva registrada aqui.
+
+| Arquivo `_inbox/barras/` → local | Exercício | SHA-256 | Bytes |
+|---|---|---|---|
+| `01_flexao_arqueiro.png` → `barra-arqueiro.png` | archer-pushup (única) | `6c321c22…d64f2b` | 196469 |
+| `02_pseudo_planche.png` → `barra-pseudo.png` | pseudo-planche (única) | `d5dbcf58…423b` | 185904 |
+| `03_remada_invertida.png` → `barra-remada.png` | inverted-row (única) | `bf3d1440…4275` | 186208 |
+| `04_…pes_elevados.png` → `barra-remada-elev.png` | inverted-row-elevated (única) | `483f0805…cb1` | 180938 |
+| `05_pendurado_na_barra.png` → `barra-deadhang.png` | dead-hang (única) | `c65e03f5…c6de` | 139964 |
+| `06_barra_com_negativa.png` → `barra-negativa.png` | negative-pullup (única) | `808e48f8…f8d` | 144487 |
+| `07_barra_fixa.png` → `barra-fixa.png` | pullup (única) | `e21d05f3…67f2c` | 156894 |
+| `08_barra_supinada.png` → `barra-supinada.png` | chinup (única) | `3eb4de11…f491` | 150157 |
+| `09_barra_pegada_aberta.png` → `barra-aberta.png` | wide-pullup (única) | `8438493e…c5b7` | 165592 |
+| `01_circulos_de_braco.png` → `mob-bracos.png` | arm-circles (única) | `50bf801a…8e53` | 107590 |
+| `02_gato_vaca.png` → `mob-gato.png` | cat-cow (única) | `2d809350…e23c9` | 145862 |
+| `03_rotacao_de_tronco.png` → `mob-tronco.png` | trunk-rotation (única, posição inicial) | `3020a013…87d3` | 83252 |
+| `04_…com_pausa.png` → `mob-agacha.png` | deep-squat-hold (única) | `f077b955…c16` | 95862 |
+
+Cobertura atual: **30 de 40** exercícios com demonstração. Limpeza segura
+desta rodada: `public/media/prancha-lateral.png` obsoleta removida (entry
+desaprovada) + scaffold `src/assets/{hero.png,react.svg,vite.svg}` sem
+referência removido (versionados, recuperáveis no git). `_inbox/` intacta
+(não versionada — apagamento permanente adiado).
+
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).
 - Ícones `public/icons/icon-192.png`, `icon-512.png`, `maskable-512.png` (+ `icon-source.svg`) — design original gerado neste projeto via `scripts/make-icons.mjs` (autoria própria, sem restrição).

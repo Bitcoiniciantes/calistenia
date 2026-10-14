@@ -28,6 +28,10 @@ function card(exerciseId: string, file: string): MediaCredit {
   return { exerciseId, file, pageUrl: '', author: CARD, license: CARD_LICENSE, licenseUrl: '', attribution: CARD_ATTR }
 }
 
+function ai(exerciseId: string, file: string): MediaCredit {
+  return { exerciseId, file, pageUrl: '', author: AI, license: AI_LICENSE, licenseUrl: '', attribution: AI_ATTR }
+}
+
 export const mediaCredits: MediaCredit[] = [
   card('pushup', 'foto-flexao.png'),
   card('incline-pushup', 'foto-flexao-inclinada.png'),
@@ -42,6 +46,19 @@ export const mediaCredits: MediaCredit[] = [
   card('plank', 'foto-prancha.png'),
   card('side-plank', 'foto-prancha-lateral.png'),
   card('handstand-wall', 'foto-handstand.png'),
+  ai('archer-pushup', 'barra-arqueiro.png'),
+  ai('pseudo-planche', 'barra-pseudo.png'),
+  ai('inverted-row', 'barra-remada.png'),
+  ai('inverted-row-elevated', 'barra-remada-elev.png'),
+  ai('dead-hang', 'barra-deadhang.png'),
+  ai('negative-pullup', 'barra-negativa.png'),
+  ai('pullup', 'barra-fixa.png'),
+  ai('chinup', 'barra-supinada.png'),
+  ai('wide-pullup', 'barra-aberta.png'),
+  ai('arm-circles', 'mob-bracos.png'),
+  ai('cat-cow', 'mob-gato.png'),
+  ai('trunk-rotation', 'mob-tronco.png'),
+  ai('deep-squat-hold', 'mob-agacha.png'),
   {
     exerciseId: 'mountain-climbers',
     file: 'escalador-700.png',

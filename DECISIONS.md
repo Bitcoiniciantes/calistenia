@@ -61,3 +61,9 @@
 ## 2026-10-13 — posicoesnovas 700x700 (17 de 40, qualidade)
 
 - Série neon em 700x700 sem legendas queimadas. 4 integradas após inspeção visual (hollow-700, joelhos-barra-700, escalador-700, lsit-700), substituindo as versões pequenas. Restante redundante com cartões, sem exercício ou incompatível (05 deitado, 08 prancha alta, 06 duplicata). check-refs verde; 36/36 testes; tsc/eslint limpos.
+
+## 2026-10-13 — barras + mobilidade (30 de 40) + limpeza segura
+
+- 13 arquivos de _inbox/barras integrados após inspeção visual (SHA-256 + tipo real): pilar pull inteiro (remada, remada elevada, dead hang, negativa, fixa, supinada, aberta), arqueiro, pseudo-planche e mobilidade completa (braços, gato-vaca, tronco, agachamento profundo). mob-tronco mostra posição inicial — ressalva em CREDITS.
+- Limpeza: prancha-lateral.png obsoleta desaprovada/removida + scaffold src/assets/{hero,react,vite} removido (versionados). _inbox/ intacta (pergunta de escopo dispensada pelo usuário; apagamento lá é permanente).
+- check-refs: 30 refs, 0 faltando, 0 sem crédito. 36/36 testes, tsc/eslint limpos. Detalhe da remada conferido visualmente.
