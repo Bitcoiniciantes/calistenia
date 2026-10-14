@@ -218,12 +218,20 @@ export function Hoje({ repo }: { repo: Repository }) {
         <div className="flex flex-col gap-2 p-4">
           {session &&
             (todayLog ? (
-              <p className="font-bold" style={{ color: 'var(--green)' }}>
-                Treino concluído ✓
-                <span className="tnum ml-2 text-sm font-medium opacity-80">
-                  {doneSets} séries · {doneMin} min
-                </span>
-              </p>
+              <>
+                <p className="font-bold" style={{ color: 'var(--green)' }}>
+                  Treino concluído ✓
+                  <span className="tnum ml-2 text-sm font-medium opacity-80">
+                    {doneSets} séries · {doneMin} min
+                  </span>
+                </p>
+                <Link
+                  to={`/execucao/${session.id}`}
+                  className="btn-secondary w-full"
+                >
+                  Refazer treino
+                </Link>
+              </>
             ) : (
               <Link
                 to={`/execucao/${session.id}`}

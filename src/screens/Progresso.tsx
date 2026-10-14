@@ -67,6 +67,11 @@ export function Progresso({ repo }: { repo: Repository }) {
   }
 
   // Topo: mesma janela móvel de 7 dias do volume (regra do app).
+  // "Treinos" conta dias distintos com treino: refazer no mesmo dia
+  // soma séries, mas não conta duas vezes aqui nem na sequência.
+  const weekDays = new Set(
+    weekLogs.map((l) => new Date(l.date).toDateString()),
+  )
   const cutoff = new Date()
   cutoff.setDate(cutoff.getDate() - 7)
   const weekLogs = logs.filter((l) => new Date(l.date) >= cutoff)
@@ -102,7 +107,7 @@ export function Progresso({ repo }: { repo: Repository }) {
 
       <div className="grid grid-cols-3 gap-2">
         <div className="card p-3 text-center">
-          <p className="tnum text-2xl font-bold">{weekLogs.length}</p>
+          <p className="tnum text-2xl font-bold">{weekDays.size}</p>
           <p className="caption">treinos (7 dias)</p>
         </div>
         <div className="card p-3 text-center">
