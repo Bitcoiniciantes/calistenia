@@ -268,7 +268,7 @@ body {
 }
 
 .run-media {
-  height: 55dvh;
+  height: 50dvh;
   min-height: 0;
   position: relative;
   background: #000;
