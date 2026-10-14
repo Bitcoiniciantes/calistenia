@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Repository } from '../repo/Repository'
 import type { UserProfile } from '../repo/types'
+import { APP_VERSION } from '../version'
 
 /** Ajustes: perfil, lembrete de treino, tempos e tema. */
 export function Ajustes({ repo }: { repo: Repository }) {
@@ -179,6 +180,14 @@ export function Ajustes({ repo }: { repo: Repository }) {
         >
           Tema: {theme === 'dark' ? 'escuro' : 'claro'} (trocar)
         </button>
+      </section>
+
+      <section aria-label="Versão">
+        <h2 className="font-bold">Versão</h2>
+        <p className="text-sm" data-testid="app-version-ajustes">
+          {APP_VERSION} — se não mudou após publicar, recarregue a página
+          (o modo offline pode segurar a versão anterior).
+        </p>
       </section>
 
       <Link to="/" className="text-sm underline">

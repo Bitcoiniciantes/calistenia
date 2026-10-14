@@ -100,3 +100,9 @@
 - Causa do treino que nunca encerrava: no hold, tocar o botão com o timer rodando chamava setHoldLeft(holdSec) — reinício silencioso na mesma série. Quem vinha do fluxo de reps (toque = concluir) ficava em loop, inclusive na última série.
 - Botão de hold agora igual ao de reps: rodando mostra `Xs… (concluir)` e o toque conclui a série. `Parar` segue cancelando.
 - Regressão: `src/screens/__tests__/RunScreenHold.test.tsx` (toque conclui 1/2 → Descanse…; auto-início; toque na 2/2 → Treino concluído! + log). 41/41 testes. Verificado em navegador (inic-b: toque concluiu e avançou para Série 2/3).
+
+## 2026-10-14 — Versão visível no rodapé (v1, v2, …)
+
+- `src/version.ts` (`APP_VERSION`): rodapé da BottomNav + seção Versão nos Ajustes ("se não mudou após publicar, recarregue"). Incrementar a cada publicação.
+- Motivo: "nada mudou" — SW com autoUpdate + cache offline podem segurar a versão antiga; além disso o muscoloso.pages.dev (Cloudflare) não acompanha a main. O marcador mostra em qual build o aparelho está.
+- Teste: `src/components/__tests__/BottomNav.test.tsx`. 42/42 testes.
