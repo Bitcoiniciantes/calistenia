@@ -454,16 +454,6 @@ export function RunScreen({ session, repo }: RunScreenProps) {
           Som: {soundOn ? 'ligado' : 'desligado'}
         </button>
       </div>
-      <div className="run-media">
-        <ExerciseMedia
-          key={exercise.id}
-          frames={exercise.media.frames}
-          alt={`Demonstração de ${exercise.namePt}`}
-          exerciseName={exercise.namePt}
-          cues={exercise.cues}
-        />
-      </div>
-
       <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4">
         <div>
           <h1 className="text-[22px] leading-tight font-bold">{exercise.namePt}</h1>
@@ -683,6 +673,15 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             ))}
           </ul>
         </details>
+      </div>
+      <div className="run-media shrink-0">
+        <ExerciseMedia
+          key={exercise.id}
+          frames={exercise.media.frames}
+          alt={`Demonstração de ${exercise.namePt}`}
+          exerciseName={exercise.namePt}
+          cues={exercise.cues}
+        />
       </div>
     </div>
   )
