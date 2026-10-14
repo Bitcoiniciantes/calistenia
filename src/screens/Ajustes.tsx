@@ -10,6 +10,7 @@ export function Ajustes({ repo }: { repo: Repository }) {
   const [reminder, setReminder] = useState('')
   const [seriesSec, setSeriesSec] = useState('30')
   const [restSec, setRestSec] = useState('')
+  const [alongSec, setAlongSec] = useState('30')
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
     typeof document !== 'undefined' &&
     document.documentElement.dataset['theme'] === 'light'
@@ -24,6 +25,7 @@ export function Ajustes({ repo }: { repo: Repository }) {
       setReminder(p?.reminderTime ?? '')
       setSeriesSec(String(p?.seriesSec ?? 30))
       setRestSec(p?.restSecOverride === undefined ? '' : String(p.restSecOverride))
+      setAlongSec(String(p?.alongamentoSec ?? 30))
     })
   }, [repo])
 
@@ -67,11 +69,13 @@ export function Ajustes({ repo }: { repo: Repository }) {
       ...base,
       seriesSec: clampSec(Number(seriesSec), 30),
       restSecOverride: rest,
+      alongamentoSec: clampSec(Number(alongSec), 30),
     }
     await repo.saveProfile(next)
     setProfile(next)
     setSeriesSec(String(next.seriesSec))
     setRestSec(rest === undefined ? '' : String(rest))
+    setAlongSec(String(next.alongamentoSec))
     setMsg('Tempos salvos.')
   }
 
@@ -147,6 +151,17 @@ export function Ajustes({ repo }: { repo: Repository }) {
             className="touch-target w-24 rounded border px-2"
           />
         </label>
+        <label className="flex items-center gap-2 text-sm">
+          Alongamento (segundos)
+          <input
+            type="number"
+            min={10}
+            max={600}
+            value={alongSec}
+            onChange={(e) => setAlongSec(e.target.value)}
+            className="touch-target w-24 rounded border px-2"
+          />
+        </label>
         <button
           type="button"
           onClick={() => void saveTimes()}
@@ -156,7 +171,8 @@ export function Ajustes({ repo }: { repo: Repository }) {
         </button>
         <p className="rounded border p-2 text-sm">
           A série conclui sozinha ao zerar (10–600 s). Descanso vazio = 30s.
-          No último exercício não há descanso: termina direto.
+          No último exercício não há descanso: termina direto. Cada imagem
+          do alongamento segue o tempo acima (padrão 30s).
           Ficam salvos no aparelho: recarregar a tela não altera.
         </p>
       </section>

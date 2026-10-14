@@ -16,8 +16,8 @@ export interface AlongamentoGroup {
   items: Alongamento[]
 }
 
-/** Duração de cada imagem na apresentação (ms). */
-export const SLIDE_MS = 60_000
+/** Duração padrão de cada imagem na apresentação (ms); ajustável no perfil. */
+export const SLIDE_MS = 30_000
 
 const yogaNames = [
   'Gato camelo',

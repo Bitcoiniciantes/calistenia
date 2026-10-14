@@ -94,6 +94,8 @@ export interface UserProfile {
   seriesSec?: number
   /** Descanso entre séries em segundos (ausente = 30 padrão). */
   restSecOverride?: number
+  /** Duração de cada imagem do alongamento em segundos (padrão 30). */
+  alongamentoSec?: number
 }
 
 // Sessão em andamento, persistida a cada mudança para sobreviver a

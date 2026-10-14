@@ -55,7 +55,7 @@ function Shell({ repo }: { repo: Repository }) {
         <Route path="/programas/:id" element={<DetalhePrograma repo={repo} />} />
         <Route path="/progresso" element={<Progresso repo={repo} />} />
         <Route path="/ajustes" element={<Ajustes repo={repo} />} />
-        <Route path="/alongamentos" element={<Alongamentos />} />
+        <Route path="/alongamentos" element={<Alongamentos repo={repo} />} />
         <Route path="/onboarding" element={<Onboarding repo={repo} />} />
       </Routes>
       {!semNav && <BottomNav />}

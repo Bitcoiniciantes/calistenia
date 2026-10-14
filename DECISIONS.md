@@ -130,3 +130,9 @@
 - Causa: `restEndsAt = agora` (descanso 0) vs `now` defasado (ticker 500 ms) → `restMs > 0` por ~1 tick → painel `Descanse…` piscava e o efeito de fim de descanso bipava + auto-iniciava de novo (loop aparente).
 - `completeSet` (`src/repo/activeSession.ts`): só grava `restEndsAt` quando descanso > 0; com 0 fica indefinido (`restRemainingMs = 0`). O auto-início do último exercício (timeout no `RunScreen`) segue único.
 - Teste repo: `completeSet(..., 0)` sem `restEndsAt`. 44/44 testes; tsc/eslint/build limpos. E2E: `Parabéns` sem nenhum flash de descanso.
+
+## 2026-10-14 — v7: alongamento 30s + parabéns no fim + calibragem
+
+- Padrão de cada imagem: 60s → 30s (`SLIDE_MS`); perfil ganha `alongamentoSec` e Ajustes > Tempos ganha o campo Alongamento (10–600 s, padrão 30s).
+- Fim da sequência (18/18, 20/20) mostra `Parabéns! Sequência concluída!` + `Recomeçar` em vez de reiniciar sozinho; trocar de grupo reinicia.
+- Testes de Alongamentos atualizados (30s, parabéns, recomeço, duração do perfil). 46/46 testes; tsc/eslint/build limpos. E2E: navegação até 18/18 → parabéns → recomeço em 1/18.
