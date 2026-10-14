@@ -146,3 +146,9 @@
 ## 2026-10-14 — v11: cartão 02 flexão de joelhos atualizado
 
 - `_inbox/20posicoes/02_flexao_de_braco_com_joelhos_apoiados.png` trocado pelo usuário (583908 bytes, SHA-256 `2eb938b7…dbcc`, PNG real). Re-sincronizado via `sync-media:local` (bytes idênticos) para `foto-flexao-joelhos.png`; allowlist + CREDITS atualizados. Nome do arquivo no app inalterado.
+
+## 2026-10-14 — v13: som audível + bipe no fim da série
+
+- Causa do mudo: `AudioContext` criado suspenso (autoplay) e nunca retomado. Agora: contexto compartilhado, `unlockAudio()` nos toques (Iniciar/concluir, Som) e `await ctx.resume()` antes de cada bipe.
+- Bipe também ao concluir a série (pode sair da posição); mantido o bipe de fim de descanso. `Som: desligado` silencia tudo.
+- 46/46 testes; tsc/eslint/build limpos. Navegador: fluxo sem erros (audibilidade real só no aparelho).

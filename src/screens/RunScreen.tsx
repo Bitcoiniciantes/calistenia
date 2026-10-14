@@ -92,21 +92,47 @@ const DEFAULT_SERIES_SEC = 30
 /** Descanso padrão (s) quando o perfil não define outro valor. */
 const DEFAULT_REST_SEC = 30
 
-/** Bipe curto de fim de descanso (WebAudio, sem arquivos). Opcional. */
-function beep() {
+/**
+ * Bipe curto de fim de série/descanso (WebAudio, sem arquivos). Opcional.
+ * Usa um contexto compartilhado: o navegador cria o AudioContext suspenso
+ * (política de autoplay), então é preciso `resume()` — que só funciona
+ * após gesto do usuário (`unlockAudio` nos toques).
+ */
+let sharedCtx: AudioContext | undefined
+
+function audioCtx(): AudioContext | undefined {
   try {
     const w = window as unknown as {
       AudioContext?: typeof AudioContext
       webkitAudioContext?: typeof AudioContext
     }
     const Ctx = w.AudioContext ?? w.webkitAudioContext
-    if (!Ctx) return
-    const ctx = new Ctx()
+    if (!Ctx) return undefined
+    sharedCtx ??= new Ctx()
+    return sharedCtx
+  } catch {
+    return undefined
+  }
+}
+
+/** Tenta liberar o áudio; chamar dentro de toques (gesto do usuário). */
+function unlockAudio() {
+  try {
+    void audioCtx()?.resume?.()?.catch?.(() => undefined)
+  } catch {
+    /* sem som */
+  }
+}
+
+async function beep(): Promise<void> {
+  try {
+    const ctx = audioCtx()
+    if (!ctx) return
+    await ctx.resume()
     const osc = ctx.createOscillator()
     osc.connect(ctx.destination)
     osc.start()
     osc.stop(ctx.currentTime + 0.3)
-    void ctx.close?.()
   } catch {
     /* sem som */
   }
@@ -190,7 +216,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   // da próxima série (a imagem já avançou na conclusão da série anterior).
   useEffect(() => {
     if (wasResting.current && !resting && !finished) {
-      if (soundOn) beep()
+      if (soundOn) void beep()
       if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
         try {
           navigator.vibrate(200)
@@ -243,6 +269,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   async function toggleSound() {
     const next = !soundOn
     setSoundOn(next)
+    unlockAudio()
     const profile = (await repo.getProfile()) ?? {
       startingPoints: {},
       equipment: [] as string[],
@@ -271,6 +298,9 @@ export function RunScreen({ session, repo }: RunScreenProps) {
 
   const handleComplete = useCallback(() => {
     setSeriesLeft(null)
+    unlockAudio()
+    // Fim da série: avisa que pode sair da posição.
+    if (soundOn) void beep()
     setActive((prev) => {
       if (!prev) return prev
       // Último exercício: sem descanso — termina mais rápido.
@@ -322,7 +352,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
       setHoldLeft(null)
       return next
     })
-  }, [repo, session, restOverride, seriesSec])
+  }, [repo, session, restOverride, seriesSec, soundOn])
 
   // Timer da série (repetições): contagem regressiva; ao zerar, conclui
   // a série e pula para a próxima imagem. Tocar de novo conclui antes.
@@ -540,11 +570,14 @@ export function RunScreen({ session, repo }: RunScreenProps) {
               type="button"
               aria-label={holdLeft === null ? `Iniciar ${item.holdSec ?? 0}s` : `${holdLeft}s… (concluir)`}
               className="rounded-full"
-              onClick={() =>
-                holdLeft === null
-                  ? setHoldLeft(item.holdSec ?? 30)
-                  : handleComplete()
-              }
+              onClick={() => {
+                if (holdLeft === null) {
+                  unlockAudio()
+                  setHoldLeft(item.holdSec ?? 30)
+                } else {
+                  handleComplete()
+                }
+              }}
             >
               <TimerRing
                 total={item.holdSec ?? 30}
@@ -572,11 +605,14 @@ export function RunScreen({ session, repo }: RunScreenProps) {
               type="button"
               aria-label={seriesLeft === null ? `Iniciar a série (${seriesSec}s)` : `${seriesLeft}s… (concluir)`}
               className="rounded-full"
-              onClick={() =>
-                seriesLeft === null
-                  ? setSeriesLeft(seriesSec)
-                  : handleComplete()
-              }
+              onClick={() => {
+                if (seriesLeft === null) {
+                  unlockAudio()
+                  setSeriesLeft(seriesSec)
+                } else {
+                  handleComplete()
+                }
+              }}
             >
               <TimerRing
                 total={seriesSec}
