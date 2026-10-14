@@ -268,7 +268,7 @@ body {
 }
 
 .run-media {
-  height: 38dvh;
+  height: 55dvh;
   min-height: 0;
   position: relative;
   background: #000;
@@ -280,13 +280,13 @@ body {
   min-width: 44px;
 }
 
-/* Animação por crossfade entre 2 frames */
+/* Animação por crossfade entre 2 frames (foto inteira, sem corte) */
 .exercise-media {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #fff; /* traço preto dos SVGs precisa de fundo claro */
+  background: #000;
 }
 
 .exercise-media img {
@@ -294,7 +294,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -342,17 +342,17 @@ body {
   object-fit: cover;
 }
 
-/* 1 frame (hold): imagem estática ocupando a área de mídia */
+/* 1 frame (hold): imagem estática inteira, sem corte */
 .exercise-static {
   width: 100%;
   height: 100%;
-  background: #fff; /* traço preto dos SVGs precisa de fundo claro */
+  background: #000;
 }
 
 .exercise-static img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* Par incoerente: início e fim lado a lado, estáticos, sem animação */
@@ -367,5 +367,6 @@ body {
 .exercise-side-by-side img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #000;
 }
