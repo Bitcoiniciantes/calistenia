@@ -151,7 +151,7 @@ correspondente no catálogo de 40.
 | `05_flexao_inclinada.png` → `foto-flexao-inclinada.png` | incline-pushup (única) | `40ef6af8…60dd` | 348403 |
 | `06_agachamento_livre.png` → `foto-agachamento.png` | bodyweight-squat (única; substitui par animado) | `6e9c00ae…594` | 310219 |
 | `08_agachamento_bulgaro.png` → `foto-bulgaro.png` | bulgarian-split (única) | `96878192…992d` | 341681 |
-| `10_avanco_reverso.png` → `foto-avanco-reverso.png` | reverse-lunge (única) | `5412f143…feb` | 351586 |
+| `10_avanco_reverso.png` → `foto-avanco-reverso.png` | reverse-lunge (única; atualizada em 14/10) | `586909f5…564f9` | 483681 |
 | `11…glute_bridge.png` → `foto-ponte.png` | glute-bridge (única) | `1d9d0b1d…9e2c` | 340086 |
 | `12_panturrilha_em_pe.png` → `foto-panturrilha.png` | calf-raises (única) | `931fa06c…e3d6` | 310439 |
 | `13_prancha_abdominal.png` → `foto-prancha.png` | plank (única) | `366e458d…2e40` | 314596 |

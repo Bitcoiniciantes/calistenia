@@ -111,3 +111,7 @@
 
 - `RunScreen`: `<ExerciseMedia key={exercise.id}>` — estado interno (index/playing/videoOn) zera a cada exercício; entre séries do mesmo exercício a imagem permanece (correto).
 - `inic-b` verificado: 4 exercícios com arquivos distintos (dados intactos). Validado no navegador (src troca a cada exercício). 42/42 testes; tsc/eslint/build limpos.
+
+## 2026-10-14 — v3: avanço reverso com cartão 10 atualizado
+
+- `_inbox/20posicoes/10_avanco_reverso.png` trocado pelo usuário (483681 bytes, SHA-256 `586909f5…564f9`, PNG real). Re-sincronizado via `sync-media:local` (bytes idênticos) para `foto-avanco-reverso.png`; allowlist + CREDITS atualizados. Nome do arquivo no app inalterado (reverse-lunge segue apontando para `foto-avanco-reverso.png`).
