@@ -106,3 +106,8 @@
 - `src/version.ts` (`APP_VERSION`): rodapé da BottomNav + seção Versão nos Ajustes ("se não mudou após publicar, recarregue"). Incrementar a cada publicação.
 - Motivo: "nada mudou" — SW com autoUpdate + cache offline podem segurar a versão antiga; além disso o muscoloso.pages.dev (Cloudflare) não acompanha a main. O marcador mostra em qual build o aparelho está.
 - Teste: `src/components/__tests__/BottomNav.test.tsx`. 42/42 testes.
+
+## 2026-10-14 — v2: remontagem da mídia a cada troca de exercício
+
+- `RunScreen`: `<ExerciseMedia key={exercise.id}>` — estado interno (index/playing/videoOn) zera a cada exercício; entre séries do mesmo exercício a imagem permanece (correto).
+- `inic-b` verificado: 4 exercícios com arquivos distintos (dados intactos). Validado no navegador (src troca a cada exercício). 42/42 testes; tsc/eslint/build limpos.

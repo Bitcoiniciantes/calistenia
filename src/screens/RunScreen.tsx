@@ -320,6 +320,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     <div className="run-screen app-shell">
       <div className="run-media">
         <ExerciseMedia
+          key={exercise.id}
           frames={exercise.media.frames}
           alt={`Demonstração de ${exercise.namePt}`}
           exerciseName={exercise.namePt}
