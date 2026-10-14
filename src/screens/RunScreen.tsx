@@ -318,6 +318,15 @@ export function RunScreen({ session, repo }: RunScreenProps) {
 
   return (
     <div className="run-screen app-shell">
+      <div className="flex items-center px-4 pt-2">
+        <Link
+          to="/"
+          title="Sair (o treino fica salvo e dá para retomar)"
+          className="touch-target text-sm underline opacity-80"
+        >
+          ‹ Sair
+        </Link>
+      </div>
       <div className="run-media">
         <ExerciseMedia
           key={exercise.id}

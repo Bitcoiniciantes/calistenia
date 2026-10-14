@@ -61,6 +61,12 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
       )
     })
 
+    // Sair leva ao início sem perder o treino (sessão é salva a cada mudança).
+    expect(screen.getByRole('link', { name: '‹ Sair' })).toHaveAttribute(
+      'href',
+      '/',
+    )
+
     // Série 1/2: inicia e conclui pelo toque (antes era reinício silencioso).
     fireEvent.click(screen.getByText('Iniciar 15s'))
     expect(screen.getByText(/\(concluir\)/).textContent).toMatch(/15s/)

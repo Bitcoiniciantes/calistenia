@@ -115,3 +115,7 @@
 ## 2026-10-14 — v3: avanço reverso com cartão 10 atualizado
 
 - `_inbox/20posicoes/10_avanco_reverso.png` trocado pelo usuário (483681 bytes, SHA-256 `586909f5…564f9`, PNG real). Re-sincronizado via `sync-media:local` (bytes idênticos) para `foto-avanco-reverso.png`; allowlist + CREDITS atualizados. Nome do arquivo no app inalterado (reverse-lunge segue apontando para `foto-avanco-reverso.png`).
+
+## 2026-10-14 — v4: botão Sair no treino
+
+- `RunScreen` ganha `‹ Sair` no topo (volta ao início). Sair no meio é seguro: a sessão é salva a cada mudança e voltar ao treino oferece "Retomar treino". Teste estendido em `RunScreenHold.test.tsx`.
