@@ -217,12 +217,31 @@ body {
   height: 8px;
 }
 
+/* Esqueleto de carregamento de imagem */
+.skeleton {
+  background: linear-gradient(
+    100deg,
+    var(--surface-2) 40%,
+    var(--border) 50%,
+    var(--surface-2) 60%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.2s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn-primary,
   .btn-secondary,
   .chip,
-  .tab-pill {
+  .tab-pill,
+  .skeleton {
     transition: none;
+    animation: none;
   }
 }
 
