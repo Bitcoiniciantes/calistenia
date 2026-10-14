@@ -113,9 +113,14 @@ export function Alongamentos({ repo }: { repo?: Repository }) {
 
   return (
     <div className="app-shell gap-4 p-4">
-      <h1 className="text-xl font-bold">Alongamentos</h1>
+      <h1 className="screen-title">Alongamentos</h1>
 
-      <div className="flex gap-2" role="tablist" aria-label="Sequência">
+      <div
+        className="flex gap-1 rounded-2xl p-1"
+        role="tablist"
+        aria-label="Sequência"
+        style={{ background: 'var(--surface-2)' }}
+      >
         {alongamentoGroups.map((g) => (
           <button
             key={g.id}
@@ -123,9 +128,10 @@ export function Alongamentos({ repo }: { repo?: Repository }) {
             role="tab"
             aria-selected={g.id === groupId}
             onClick={() => selectGroup(g.id)}
-            className={`touch-target flex-1 rounded border px-4 font-bold ${
-              g.id === groupId ? 'bg-green-700 text-white' : ''
+            className={`touch-target flex-1 rounded-xl px-4 text-sm font-bold ${
+              g.id === groupId ? 'text-white' : ''
             }`}
+            style={g.id === groupId ? { background: 'var(--green)' } : undefined}
           >
             {g.namePt} ({g.items.length})
           </button>
@@ -134,81 +140,147 @@ export function Alongamentos({ repo }: { repo?: Repository }) {
 
       {done ? (
         <div
-          className="flex flex-col items-center gap-4 rounded border p-6 text-center"
+          className="card flex flex-col items-center gap-2 p-6 text-center"
           data-testid="alongamento-fim"
         >
           <p className="text-xl font-bold">Parabéns! Sequência concluída!</p>
-          <p className="text-sm">
+          <p className="tnum text-sm opacity-80">
             {group.items.length} de {group.items.length} ({group.namePt}).
           </p>
           <button
             type="button"
             onClick={restart}
-            className="touch-target w-full rounded bg-green-700 px-4 font-bold text-white"
+            className="btn-primary mt-2 w-full"
           >
             Recomeçar
           </button>
         </div>
       ) : (
-      <div className="rounded border p-4">
-        <img
-          key={item.id}
-          src={pub(item.file)}
-          alt={`Alongamento: ${item.namePt}`}
-          data-testid="alongamento-img"
-          className="w-full rounded object-cover"
-        />
-        <div className="mt-2 flex items-baseline justify-between">
-          <p className="font-medium" data-testid="alongamento-nome">
+      <div className="card overflow-hidden">
+        <div className="p-3" style={{ background: '#e8ecf1' }}>
+          <img
+            key={item.id}
+            src={pub(item.file)}
+            alt={`Alongamento: ${item.namePt}`}
+            data-testid="alongamento-img"
+            className="w-full rounded-xl object-cover"
+          />
+        </div>
+        <div className="flex items-center justify-between p-4 pb-0">
+          <p className="card-title" data-testid="alongamento-nome">
             {item.namePt}
           </p>
-          <p className="text-sm opacity-70" data-testid="alongamento-pos">
+          <p
+            className="tnum rounded-full px-2.5 py-0.5 text-xs font-bold"
+            data-testid="alongamento-pos"
+            style={{ background: 'var(--surface-2)' }}
+          >
             {index + 1}/{group.items.length}
           </p>
         </div>
-        <p className="text-sm" data-testid="alongamento-timer">
-          {paused ? 'Pausado' : `Próxima em ${left}s`}
-        </p>
-        <div
-          className="mt-1 h-2 rounded bg-gray-300"
-          role="progressbar"
-          aria-valuenow={slideSec - left}
-          aria-valuemin={0}
-          aria-valuemax={slideSec}
-        >
-          <div
-            className="h-2 rounded bg-green-700"
-            style={{ width: `${((slideSec - left) / slideSec) * 100}%` }}
-          />
+        <div className="flex items-center gap-4 p-4">
+          <svg
+            viewBox="0 0 120 120"
+            width="120"
+            height="120"
+            role="progressbar"
+            aria-valuenow={slideSec - left}
+            aria-valuemin={0}
+            aria-valuemax={slideSec}
+            aria-label={`Próxima em ${left} segundos`}
+            className="shrink-0"
+          >
+            <circle
+              cx="60"
+              cy="60"
+              r="52"
+              fill="none"
+              stroke="var(--surface-2)"
+              strokeWidth="10"
+            />
+            <circle
+              cx="60"
+              cy="60"
+              r="52"
+              fill="none"
+              stroke="var(--green)"
+              strokeWidth="10"
+              strokeLinecap="round"
+              strokeDasharray={2 * Math.PI * 52}
+              strokeDashoffset={
+                2 * Math.PI * 52 * (left / Math.max(1, slideSec))
+              }
+              transform="rotate(-90 60 60)"
+            />
+            <text
+              x="60"
+              y="58"
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="var(--text)"
+              fontSize="30"
+              fontWeight="700"
+              style={{ fontVariantNumeric: 'tabular-nums' }}
+            >
+              {left}s
+            </text>
+          </svg>
+          <div className="flex min-w-0 flex-1 flex-col gap-1">
+            <p className="text-sm" data-testid="alongamento-timer">
+              {paused ? 'Pausado' : `Próxima em ${left}s`}
+            </p>
+            <p className="caption">Segure a posição até trocar</p>
+          </div>
         </div>
-        <div className="mt-2 flex gap-2">
+        <div className="flex items-center gap-2 p-4 pt-0">
           <button
             type="button"
             onClick={() => go(-1)}
-            className="touch-target flex-1 rounded border px-4"
+            aria-label="Anterior"
+            className="touch-target flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-full text-xs font-semibold"
+            style={{ background: 'var(--surface-2)' }}
           >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m14.5 5.5-6.5 6.5 6.5 6.5" />
+            </svg>
             Anterior
           </button>
           <button
             type="button"
             onClick={() => setPaused((p) => !p)}
             aria-pressed={paused}
-            className="touch-target flex-1 rounded border px-4 font-bold"
+            className="touch-target mx-auto flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-full text-sm font-bold text-white"
+            style={{ background: 'linear-gradient(180deg, var(--green), var(--green-dark))' }}
           >
+            {paused ? (
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <rect x="6.5" y="5" width="4" height="14" rx="1" />
+                <rect x="13.5" y="5" width="4" height="14" rx="1" />
+              </svg>
+            )}
             {paused ? 'Continuar' : 'Pausar'}
           </button>
           <button
             type="button"
             onClick={() => go(1)}
-            className="touch-target flex-1 rounded border px-4"
+            aria-label="Próxima"
+            className="touch-target flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-full text-xs font-semibold"
+            style={{ background: 'var(--surface-2)' }}
           >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m9.5 5.5 6.5 6.5-6.5 6.5" />
+            </svg>
             Próxima
           </button>
         </div>
       </div>
       )}
 
-      <p className="text-sm opacity-70">
+      <p className="caption">
         Ilustrações fornecidas pelo usuário (declaradas em 14/10/2026).
       </p>
     </div>
