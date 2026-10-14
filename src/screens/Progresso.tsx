@@ -69,12 +69,12 @@ export function Progresso({ repo }: { repo: Repository }) {
   // Topo: mesma janela móvel de 7 dias do volume (regra do app).
   // "Treinos" conta dias distintos com treino: refazer no mesmo dia
   // soma séries, mas não conta duas vezes aqui nem na sequência.
-  const weekDays = new Set(
-    weekLogs.map((l) => new Date(l.date).toDateString()),
-  )
   const cutoff = new Date()
   cutoff.setDate(cutoff.getDate() - 7)
   const weekLogs = logs.filter((l) => new Date(l.date) >= cutoff)
+  const weekDays = new Set(
+    weekLogs.map((l) => new Date(l.date).toDateString()),
+  )
   const totalSets = logs.reduce(
     (acc, l) =>
       acc +
