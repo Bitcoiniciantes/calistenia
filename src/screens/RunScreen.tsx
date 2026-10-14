@@ -1,6 +1,7 @@
 ﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ExerciseMedia } from '../components/ExerciseMedia'
+import { pub } from '../media'
 import {
   completeSet,
   currentExerciseId,
@@ -26,6 +27,67 @@ function formatCountdown(ms: number): string {
   const s = Math.ceil(ms / 1000)
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
+
+/** Anel de progresso do cronômetro (série e hold): segundos grandes no centro. */
+function TimerRing({
+  total,
+  left,
+  label,
+}: {
+  total: number
+  left: number
+  label: string
+}) {
+  const c = 2 * Math.PI * 52
+  const safeTotal = Math.max(1, total)
+  return (
+    <svg
+      viewBox="0 0 120 120"
+      width="148"
+      height="148"
+      role="progressbar"
+      aria-valuenow={safeTotal - Math.max(0, left)}
+      aria-valuemin={0}
+      aria-valuemax={safeTotal}
+      aria-label={label}
+    >
+      <circle
+        cx="60"
+        cy="60"
+        r="52"
+        fill="none"
+        stroke="var(--surface-2)"
+        strokeWidth="10"
+      />
+      <circle
+        cx="60"
+        cy="60"
+        r="52"
+        fill="none"
+        stroke="var(--green)"
+        strokeWidth="10"
+        strokeLinecap="round"
+        strokeDasharray={c}
+        strokeDashoffset={c * (Math.max(0, left) / safeTotal)}
+        transform="rotate(-90 60 60)"
+      />
+      <text
+        x="60"
+        y="60"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fill="var(--text)"
+        fontSize="30"
+        fontWeight="700"
+        style={{ fontVariantNumeric: 'tabular-nums' }}
+      >
+        {Math.max(0, left)}s
+      </text>
+    </svg>
+  )
+}
+
+export function RunScreen({ session, repo }: RunScreenProps) {
 
 /** Janela de execução da série de repetições (s): ao zerar, avança sozinho. */
 const DEFAULT_SERIES_SEC = 30
@@ -168,6 +230,15 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     return exerciseById[nextItem.exerciseId]?.namePt ?? nextItem.exerciseId
   }, [active, finished, session, item])
 
+  const nextThumb = useMemo(() => {
+    if (!active || finished) return undefined
+    const nextItem =
+      session.items[active.currentItemIndex + (active.currentSet >= (item?.sets ?? 1) ? 1 : 0)]
+    if (!nextItem) return undefined
+    const frames = exerciseById[nextItem.exerciseId]?.media.frames
+    return frames?.[0]
+  }, [active, finished, session, item])
+
   const handleComplete = useCallback(() => {
     setSeriesLeft(null)
     setActive((prev) => {
@@ -306,11 +377,11 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     )
     return (
       <div className="app-shell items-center justify-center gap-4 p-6 text-center">
-        <h1 className="text-xl font-bold">Parabéns! Treino concluído!</h1>
-        <p className="text-sm">{totalSets ?? 0} séries registradas no histórico local.</p>
+        <h1 className="screen-title">Parabéns! Treino concluído!</h1>
+        <p className="tnum text-sm opacity-80">{totalSets ?? 0} séries registradas no histórico local.</p>
         <Link
           to="/"
-          className="touch-target flex w-full items-center justify-center rounded bg-green-700 px-4 font-bold text-white"
+          className="btn-primary w-full"
         >
           Voltar ao início
         </Link>
@@ -335,14 +406,23 @@ export function RunScreen({ session, repo }: RunScreenProps) {
 
   return (
     <div className="run-screen app-shell">
-      <div className="flex items-center px-4 pt-2">
+      <div className="flex items-center justify-between px-4 pt-2">
         <Link
           to="/"
           title="Sair (o treino fica salvo e dá para retomar)"
-          className="touch-target text-sm underline opacity-80"
+          className="touch-target text-sm font-semibold underline opacity-80"
         >
           ‹ Sair
         </Link>
+        <button
+          type="button"
+          onClick={() => void toggleSound()}
+          aria-pressed={soundOn}
+          className="touch-target rounded-xl px-3 text-xs font-semibold"
+          style={{ background: 'var(--surface-2)' }}
+        >
+          Som: {soundOn ? 'ligado' : 'desligado'}
+        </button>
       </div>
       <div className="run-media">
         <ExerciseMedia
@@ -354,68 +434,102 @@ export function RunScreen({ session, repo }: RunScreenProps) {
         />
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto p-4">
-        <div className="flex items-baseline justify-between">
-          <h1 className="text-lg font-bold">{exercise.namePt}</h1>
-          <span className="text-sm opacity-70">
-            {active.currentItemIndex + 1}/{session.items.length} · Série{' '}
-            {active.currentSet}/{item.sets}
-          </span>
+      <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4">
+        <div>
+          <h1 className="text-[22px] leading-tight font-bold">{exercise.namePt}</h1>
+          <div className="mt-1.5 flex gap-1.5">
+            <span className="tnum rounded-full px-2.5 py-0.5 text-xs font-bold" style={{ background: 'var(--surface-2)' }}>
+              {active.currentItemIndex + 1}/{session.items.length}
+            </span>
+            <span className="tnum rounded-full px-2.5 py-0.5 text-xs font-bold text-white" style={{ background: 'var(--green)' }}>
+              Série {active.currentSet}/{item.sets}
+            </span>
+            <span className="rounded-full px-2.5 py-0.5 text-xs font-semibold opacity-80" style={{ background: 'var(--surface-2)' }}>
+              {target}
+            </span>
+          </div>
         </div>
-        <p className="text-sm font-medium">{target}</p>
-        <button
-          type="button"
-          onClick={() => void toggleSound()}
-          aria-pressed={soundOn}
-          className="touch-target self-start rounded border px-2 text-xs"
-        >
-          Som: {soundOn ? 'ligado' : 'desligado'}
-        </button>
 
         {resting ? (
-          <div className="rounded border p-3 text-center" data-testid="rest-panel">
+          <div className="card flex flex-col items-center gap-1 p-4 text-center" data-testid="rest-panel">
             <p className="text-lg font-bold">Descanse…</p>
-            <p className="text-2xl font-bold" data-testid="rest-countdown">
+            <p className="tnum text-5xl font-bold" data-testid="rest-countdown">
               {formatCountdown(restMs)}
             </p>
-            <p className="text-xs opacity-70">
-              Próximo: {nextPreview ?? 'próxima série'}
-            </p>
-            <button
-              type="button"
-              className="touch-target mt-2 w-full rounded border px-4"
-              onClick={() =>
-                setActive((prev) => {
-                  if (!prev?.restEndsAt) return prev ?? null
-                  return {
-                    ...prev,
-                    restEndsAt: new Date(
-                      Date.parse(prev.restEndsAt) + 15000,
-                    ).toISOString(),
-                  }
-                })
-              }
-            >
-              +15 s
-            </button>
+            <p className="caption">respire e prepare a próxima</p>
+            {(nextPreview ?? nextThumb) && (
+              <p className="mt-1 flex items-center gap-2 text-sm">
+                {nextThumb && (
+                  <img
+                    src={pub(nextThumb)}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-12 w-12 rounded-xl object-cover"
+                  />
+                )}
+                <span className="opacity-80">
+                  Próximo: {nextPreview ?? 'próxima série'}
+                </span>
+              </p>
+            )}
+            <div className="mt-2 flex w-full gap-2">
+              <button
+                type="button"
+                className="btn-primary flex-1"
+                onClick={() =>
+                  setActive((prev) => {
+                    if (!prev?.restEndsAt) return prev ?? null
+                    return { ...prev, restEndsAt: undefined }
+                  })
+                }
+              >
+                Pular descanso
+              </button>
+              <button
+                type="button"
+                className="btn-secondary px-4"
+                onClick={() =>
+                  setActive((prev) => {
+                    if (!prev?.restEndsAt) return prev ?? null
+                    return {
+                      ...prev,
+                      restEndsAt: new Date(
+                        Date.parse(prev.restEndsAt) + 15000,
+                      ).toISOString(),
+                    }
+                  })
+                }
+              >
+                +15 s
+              </button>
+            </div>
           </div>
         ) : exercise.type === 'hold' ? (
-          <div className="flex gap-2">
+          <div className="flex flex-col items-center gap-1">
             <button
               type="button"
-              className="touch-target flex-1 rounded bg-green-700 px-4 text-lg font-bold text-white"
+              aria-label={holdLeft === null ? `Iniciar ${item.holdSec ?? 0}s` : `${holdLeft}s… (concluir)`}
+              className="rounded-full"
               onClick={() =>
                 holdLeft === null
                   ? setHoldLeft(item.holdSec ?? 30)
                   : handleComplete()
               }
             >
-              {holdLeft === null ? `Iniciar ${item.holdSec ?? 0}s` : `${holdLeft}s… (concluir)`}
+              <TimerRing
+                total={item.holdSec ?? 30}
+                left={holdLeft ?? item.holdSec ?? 30}
+                label={holdLeft === null ? `Segure ${item.holdSec ?? 0}s` : `Faltam ${holdLeft}s`}
+              />
             </button>
+            <p className="text-sm font-semibold opacity-80">
+              {holdLeft === null ? `Iniciar ${item.holdSec ?? 0}s` : `${holdLeft}s… (concluir)`}
+            </p>
             {holdLeft !== null && (
               <button
                 type="button"
-                className="touch-target rounded border px-4"
+                className="touch-target rounded-xl px-4 text-sm font-semibold"
+                style={{ background: 'var(--surface-2)' }}
                 onClick={() => setHoldLeft(null)}
               >
                 Parar
@@ -423,24 +537,33 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             )}
           </div>
         ) : (
-          <div className="flex gap-2">
+          <div className="flex flex-col items-center gap-1">
             <button
               type="button"
-              className="touch-target w-full flex-1 rounded bg-green-700 px-4 text-lg font-bold text-white"
+              aria-label={seriesLeft === null ? `Iniciar a série (${seriesSec}s)` : `${seriesLeft}s… (concluir)`}
+              className="rounded-full"
               onClick={() =>
                 seriesLeft === null
                   ? setSeriesLeft(seriesSec)
                   : handleComplete()
               }
             >
+              <TimerRing
+                total={seriesSec}
+                left={seriesLeft ?? seriesSec}
+                label={seriesLeft === null ? `Série de ${seriesSec} segundos` : `Faltam ${seriesLeft}s`}
+              />
+            </button>
+            <p className="text-sm font-semibold opacity-80">
               {seriesLeft === null
                 ? `Iniciar a série (${seriesSec}s)`
                 : `${seriesLeft}s… (concluir)`}
-            </button>
+            </p>
             {seriesLeft !== null && (
               <button
                 type="button"
-                className="touch-target rounded border px-4"
+                className="touch-target rounded-xl px-4 text-sm font-semibold"
+                style={{ background: 'var(--surface-2)' }}
                 onClick={() => setSeriesLeft(null)}
               >
                 Parar
@@ -454,7 +577,8 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             type="button"
             disabled={!easier}
             title={easier ? `Trocar por ${easier.namePt}` : 'Sem regressão: já é o mais fácil'}
-            className="touch-target flex-1 rounded border px-2 text-sm disabled:opacity-40"
+            className="touch-target flex-1 rounded-xl px-2 text-sm font-semibold disabled:opacity-40"
+            style={{ background: 'var(--surface-2)' }}
             onClick={() => {
               if (easier) {
                 resetSeries()
@@ -468,7 +592,8 @@ export function RunScreen({ session, repo }: RunScreenProps) {
             type="button"
             disabled={!harder}
             title={harder ? `Trocar por ${harder.namePt}` : 'Sem progressão: já é o mais difícil'}
-            className="touch-target flex-1 rounded border px-2 text-sm disabled:opacity-40"
+            className="touch-target flex-1 rounded-xl px-2 text-sm font-semibold disabled:opacity-40"
+            style={{ background: 'var(--surface-2)' }}
             onClick={() => {
               if (harder) {
                 resetSeries()
@@ -480,7 +605,8 @@ export function RunScreen({ session, repo }: RunScreenProps) {
           </button>
           <button
             type="button"
-            className="touch-target rounded border px-3 text-sm"
+            className="touch-target rounded-xl px-3 text-sm font-semibold"
+            style={{ background: 'var(--surface-2)' }}
             onClick={() =>
               setActive((p) => {
                 if (!p) return p
