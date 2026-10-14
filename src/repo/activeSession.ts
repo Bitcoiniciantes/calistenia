@@ -69,8 +69,13 @@ export function completeSet(
     ...(entry.sets[next.currentSet - 1] ?? { done: false }),
     done: true,
   })
-  // Descanso após a série concluída.
-  next.restEndsAt = restUntil(nowIso, restSecOverride ?? item.restSec)
+  // Descanso após a série concluída. Com 0 (último exercício), não grava
+  // restEndsAt: evita flash do painel por relógio defasado (restMs > 0
+  // por ~1 tick) e bipe/auto-início espúrios do efeito de fim de descanso.
+  const restSec = restSecOverride ?? item.restSec
+  if (restSec > 0) {
+    next.restEndsAt = restUntil(nowIso, restSec)
+  }
 
   if (next.currentSet < item.sets) {
     next.currentSet += 1

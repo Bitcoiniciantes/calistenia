@@ -124,3 +124,9 @@
 
 - `handleComplete`: no último item, `restSecOverride = 0` (sem painel de descanso) e a próxima série auto-inicia; na última série vai direto para `Parabéns! Treino concluído!`.
 - Testes: `RunScreenHold.test.tsx` com 2 casos (último sem descanso; não-último com descanso). 43/43 testes; tsc/eslint/build limpos. E2E: último exercício concluído por toques até `Parabéns`, zero painéis de descanso.
+
+## 2026-10-14 — v6: fim do flash de descanso no último exercício
+
+- Causa: `restEndsAt = agora` (descanso 0) vs `now` defasado (ticker 500 ms) → `restMs > 0` por ~1 tick → painel `Descanse…` piscava e o efeito de fim de descanso bipava + auto-iniciava de novo (loop aparente).
+- `completeSet` (`src/repo/activeSession.ts`): só grava `restEndsAt` quando descanso > 0; com 0 fica indefinido (`restRemainingMs = 0`). O auto-início do último exercício (timeout no `RunScreen`) segue único.
+- Teste repo: `completeSet(..., 0)` sem `restEndsAt`. 44/44 testes; tsc/eslint/build limpos. E2E: `Parabéns` sem nenhum flash de descanso.

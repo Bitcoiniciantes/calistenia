@@ -36,6 +36,16 @@ describe('ActiveSession: helpers puros', () => {
     expect(sem.restEndsAt).toBe('2026-10-13T10:01:00.000Z')
   })
 
+  it('descanso 0 não grava restEndsAt (sem flash do painel)', () => {
+    const t0 = '2026-10-13T10:00:00.000Z'
+    const started = startSessionWithEntries(gateSession, t0)
+    const com = completeSet(started, gateSession, t0, 0)
+    expect(com.restEndsAt).toBeUndefined()
+    expect(restRemainingMs(com, Date.parse(t0))).toBe(0)
+    expect(com.entries[0]?.sets[0]?.done).toBe(true)
+    expect(com.currentSet).toBe(2)
+  })
+
   it('substituição troca o exercício atual e registra o mapa', () => {
     const started = startSessionWithEntries(gateSession)
     const sub = substitute(started, gateSession, 'pushup-wide')
