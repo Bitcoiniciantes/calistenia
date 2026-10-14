@@ -76,11 +76,9 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
       screen.getByRole('link', { name: '‹ Sair' }).getAttribute('href'),
     ).toBe('/')
 
-    // Série 1/2 do ÚLTIMO exercício: conclui pelo toque, sem descanso —
-    // a próxima série começa sozinha (timeout de 0 ms, disparado à parte
-    // porque efeitos passivos só descarregam ao sair do act).
-    fireEvent.click(screen.getByRole('button', { name: 'Iniciar 15s' }))
-    expect(screen.getByText(/\(concluir\)/).textContent).toMatch(/15s/)
+    // Série 1/2 do ÚLTIMO exercício: já começa sozinha ao abrir o treino.
+    // Concluir pelo toque, sem descanso — a próxima auto-inicia.
+    expect(screen.getByText(/\(concluir\)/)).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: /\(concluir\)/ }))
     expect(screen.queryByTestId('rest-panel')).toBeNull()
     expect(screen.getByText(/Série 2\/2/)).toBeTruthy()
@@ -108,8 +106,8 @@ describe('RunScreen hold: toque no timer rodando conclui (não reinicia)', () =>
       )
     })
 
-    // Item 1/2 concluído → painel de descanso (não é o último exercício).
-    fireEvent.click(screen.getByRole('button', { name: 'Iniciar 15s' }))
+    // Item 1/2 (não-último) já auto-iniciou: concluir mostra descanso.
+    expect(screen.getByText(/\(concluir\)/)).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: /\(concluir\)/ }))
     expect(screen.getByTestId('rest-panel')).toBeTruthy()
 

@@ -247,7 +247,7 @@ export function Hoje({ repo }: { repo: Repository }) {
                 >
                   <path d="M7 4.8v14.4c0 .8.9 1.3 1.6.9l11.3-7.2c.6-.4.6-1.4 0-1.8L8.6 3.9c-.7-.4-1.6.1-1.6.9Z" />
                 </svg>
-                Começar
+                Começar treino
               </Link>
             ))}
           <Link

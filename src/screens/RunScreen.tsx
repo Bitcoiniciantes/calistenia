@@ -122,7 +122,9 @@ export function RunScreen({ session, repo }: RunScreenProps) {
   const [restOverride, setRestOverride] = useState<number | undefined>()
   const [done, setDone] = useState(false)
   const [soundOn, setSoundOn] = useState(true)
+  const [profileReady, setProfileReady] = useState(false)
   const wasResting = useRef(false)
+  const autoStarted = useRef(false)
 
   // Wake Lock: tela não apaga durante o treino (quando suportado).
   useEffect(() => {
@@ -159,6 +161,7 @@ export function RunScreen({ session, repo }: RunScreenProps) {
       if (p?.soundOn === false) setSoundOn(false)
       if (p?.seriesSec) setSeriesSec(p.seriesSec)
       setRestOverride(p?.restSecOverride)
+      setProfileReady(true)
     })
     return () => {
       cancelled = true
@@ -207,6 +210,32 @@ export function RunScreen({ session, repo }: RunScreenProps) {
     }
     wasResting.current = resting
   }, [resting, finished, soundOn, exercise, item, seriesSec])
+
+  // Entrada no treino: a 1ª série começa sozinha (sem toque extra).
+  // Só uma vez por montagem e com o perfil já carregado; Parar/Pular
+  // continuam manuais (não rearma).
+  useEffect(() => {
+    if (autoStarted.current) return
+    if (!active || !profileReady || finished || resting || done) return
+    if (holdLeft !== null || seriesLeft !== null) return
+    autoStarted.current = true
+    if (exercise?.type === 'hold') {
+      setHoldLeft(item?.holdSec ?? 30)
+    } else {
+      setSeriesLeft(seriesSec)
+    }
+  }, [
+    active,
+    profileReady,
+    finished,
+    resting,
+    done,
+    holdLeft,
+    seriesLeft,
+    exercise,
+    item,
+    seriesSec,
+  ])
 
   async function toggleSound() {
     const next = !soundOn

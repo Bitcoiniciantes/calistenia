@@ -131,6 +131,12 @@
 - `completeSet` (`src/repo/activeSession.ts`): só grava `restEndsAt` quando descanso > 0; com 0 fica indefinido (`restRemainingMs = 0`). O auto-início do último exercício (timeout no `RunScreen`) segue único.
 - Teste repo: `completeSet(..., 0)` sem `restEndsAt`. 44/44 testes; tsc/eslint/build limpos. E2E: `Parabéns` sem nenhum flash de descanso.
 
+## 2026-10-14 — v10: auto-início ao abrir o treino + "Começar treino"
+
+- `RunScreen`: ao montar com sessão ativa (estreia ou retomada sem descanso), a 1ª série inicia sozinha — sem o segundo toque. Só 1x por montagem, com perfil carregado; Parar/Pular seguem manuais.
+- `Hoje`: botão passa a `Começar treino`.
+- Testes `RunScreenHold` ajustados ao auto-início (clicar via `aria-label`). 46/46 testes.
+
 ## 2026-10-14 — v7: alongamento 30s + parabéns no fim + calibragem
 
 - Padrão de cada imagem: 60s → 30s (`SLIDE_MS`); perfil ganha `alongamentoSec` e Ajustes > Tempos ganha o campo Alongamento (10–600 s, padrão 30s).
