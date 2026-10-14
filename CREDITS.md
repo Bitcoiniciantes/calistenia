@@ -206,6 +206,21 @@ desaprovada) + scaffold `src/assets/{hero.png,react.svg,vite.svg}` sem
 referência removido (versionados, recuperáveis no git). `_inbox/` intacta
 (não versionada — apagamento permanente adiado).
 
+## Pasta Novas (`_inbox/Novas/`, 13/10)
+
+Mesma origem IA e procedimento (SHA-256 + tipo real + inspeção visual das 4).
+Integradas 3; `03_dips_em_paralelas.png` REJEITADA: mostra flexão de braço com
+as mãos em paralelas de chão (push-up bars), NÃO mergulho em paralelas
+(suspensão entre barras) — ensinaria o movimento errado.
+
+| Arquivo `_inbox/Novas/` → local | Exercício | SHA-256 | Bytes |
+|---|---|---|---|
+| `01_flexao_na_parede.png` → `nova-parede.png` | wall-pushup (única) | `5b167eca…e5612` | 82019 |
+| `02_flexao_ampla.png` → `nova-ampla.png` | pushup-wide (única; encerra pendência do par) | `7d63d30d…51d` | 160914 |
+| `04_muscle_up_progressao.png` → `nova-muscleup.png` | muscleup-prog (única; troca embed TODO por local) | `e3a10634…f48b` | 94996 |
+
+Cobertura atual: **33 de 40** exercícios com demonstração.
+
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).
 - Ícones `public/icons/icon-192.png`, `icon-512.png`, `maskable-512.png` (+ `icon-source.svg`) — design original gerado neste projeto via `scripts/make-icons.mjs` (autoria própria, sem restrição).

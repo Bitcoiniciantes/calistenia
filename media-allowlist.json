@@ -935,6 +935,51 @@
       "bytes": 95862,
       "approved": true,
       "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "Novas/01_flexao_na_parede.png",
+      "local": "nova-parede.png",
+      "inbox": "Novas/01_flexao_na_parede.png",
+      "exerciseId": "wall-pushup",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "5b167ecad64260e7d526707c4fe0c493be6e6cf2e41e50f7b99f6a84fe0d5612",
+      "bytes": 82019,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "Novas/02_flexao_ampla.png",
+      "local": "nova-ampla.png",
+      "inbox": "Novas/02_flexao_ampla.png",
+      "exerciseId": "pushup-wide",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "7d63d30d78a9d64fd5e7b7646486c400db89288cecb9508b1ae10b83001fc51d",
+      "bytes": 160914,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "Novas/04_muscle_up_progressao.png",
+      "local": "nova-muscleup.png",
+      "inbox": "Novas/04_muscle_up_progressao.png",
+      "exerciseId": "muscleup-prog",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "e3a10634103452acc8ca331a9d57799d62dd684223073be25db8bbbb7792f48b",
+      "bytes": 94996,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
     }
   ]
 }

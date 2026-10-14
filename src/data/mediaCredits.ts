@@ -59,6 +59,9 @@ export const mediaCredits: MediaCredit[] = [
   ai('cat-cow', 'mob-gato.png'),
   ai('trunk-rotation', 'mob-tronco.png'),
   ai('deep-squat-hold', 'mob-agacha.png'),
+  ai('wall-pushup', 'nova-parede.png'),
+  ai('pushup-wide', 'nova-ampla.png'),
+  ai('muscleup-prog', 'nova-muscleup.png'),
   {
     exerciseId: 'mountain-climbers',
     file: 'escalador-700.png',

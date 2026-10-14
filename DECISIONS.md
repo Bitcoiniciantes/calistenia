@@ -67,3 +67,7 @@
 - 13 arquivos de _inbox/barras integrados após inspeção visual (SHA-256 + tipo real): pilar pull inteiro (remada, remada elevada, dead hang, negativa, fixa, supinada, aberta), arqueiro, pseudo-planche e mobilidade completa (braços, gato-vaca, tronco, agachamento profundo). mob-tronco mostra posição inicial — ressalva em CREDITS.
 - Limpeza: prancha-lateral.png obsoleta desaprovada/removida + scaffold src/assets/{hero,react,vite} removido (versionados). _inbox/ intacta (pergunta de escopo dispensada pelo usuário; apagamento lá é permanente).
 - check-refs: 30 refs, 0 faltando, 0 sem crédito. 36/36 testes, tsc/eslint limpos. Detalhe da remada conferido visualmente.
+
+## 2026-10-13 — pasta Novas (33 de 40)
+
+- 3 de 4 integradas após inspeção visual (parede, ampla, muscle-up — este troca embed TODO por local). 03 (dips) REJEITADA: imagem mostra flexão com mãos em paralelas de chão, não mergulho. PENDING_WIDE removido (era o único uso). Faltam 7 para 100%: dips-parallettes, chair-squat, assisted-pistol, pistol, leg-raises (pendurada), hollow-rocks, tuck-front-lever (embed). check-refs 33/33; 36/36 testes.
