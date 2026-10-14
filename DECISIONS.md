@@ -75,3 +75,7 @@
 ## 2026-10-13 — novas2 (36 de 40, faltam 4)
 
 - 3 de 7 integradas (cadeira, pernas pendurada, front lever — zera os TODOs de embed). 4 rejeitadas por não mostrarem o exercício (02 ajoelhada, 05/06 afundos, 08 sentada). Faltam: dips-parallettes, assisted-pistol, pistol, hollow-rocks. check-refs 36/36; 36/36 testes.
+
+## 2026-10-13 — novas3: 40 de 40 (projeto com imagens completo)
+
+- 4 integradas por nome, sem revisão de conteúdo (pedido expresso). Removida const PH (sem uso — tsc). check-refs 40/40 com crédito; 36/36 testes; build verde.

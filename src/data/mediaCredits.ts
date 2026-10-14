@@ -65,6 +65,10 @@ export const mediaCredits: MediaCredit[] = [
   ai('chair-squat', 'n2-cadeira.png'),
   ai('leg-raises', 'n2-pernas.png'),
   ai('tuck-front-lever', 'n2-frontlever.jpg'),
+  ai('dips-parallettes', 'n3-dips.png'),
+  ai('assisted-pistol', 'n3-assistido.png'),
+  ai('pistol', 'n3-pistol.png'),
+  ai('hollow-rocks', 'n3-hollow.png'),
   {
     exerciseId: 'mountain-climbers',
     file: 'escalador-700.png',

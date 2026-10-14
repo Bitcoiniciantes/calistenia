@@ -240,6 +240,21 @@ inclinada com joelhos dobrados, não hollow).
 Cobertura atual: **36 de 40**. Faltam 4: dips-parallettes, assisted-pistol,
 pistol, hollow-rocks.
 
+## Pasta novas3 (`_inbox/novas3/`, 13/10 — sem revisão de conteúdo, a pedido)
+
+Integradas por nome, a pedido expresso do usuário (sem inspeção visual).
+SHA-256 + tipo real verificados; bytes idênticos.
+
+| Arquivo `_inbox/novas3/` → local | Exercício | SHA-256 | Bytes |
+|---|---|---|---|
+| `01_pistol_assistido.png` → `n3-assistido.png` | assisted-pistol (única) | `126e847a…04bb` | 124057 |
+| `02_pistol.png` → `n3-pistol.png` | pistol (única) | `52d17201…a957` | 122939 |
+| `03_hollow_rocks.png` → `n3-hollow.png` | hollow-rocks (única) | `3688be3b…6c41` | 133265 |
+| `mergulhoparalelas.png` → `n3-dips.png` | dips-parallettes (única) | `ddc36902…8845` | 95265 |
+
+Cobertura atual: **40 de 40** 🎉 (verificação de correspondência visual
+pendente nas 4 — registrar divergências se encontradas).
+
 - `public/media/placeholder.svg` — ilustração placeholder criada neste projeto (autoria própria), usada como fallback em todos os exercícios do portão.
 - Textos `cues`/`commonMistakes` em `src/data/exercises.ts` — redação própria em pt-BR (não copiados do dataset).
 - Ícones `public/icons/icon-192.png`, `icon-512.png`, `maskable-512.png` (+ `icon-source.svg`) — design original gerado neste projeto via `scripts/make-icons.mjs` (autoria própria, sem restrição).

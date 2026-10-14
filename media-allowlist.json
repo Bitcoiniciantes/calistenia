@@ -1025,6 +1025,66 @@
       "bytes": 37748,
       "approved": true,
       "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "novas3/01_pistol_assistido.png",
+      "local": "n3-assistido.png",
+      "inbox": "novas3/01_pistol_assistido.png",
+      "exerciseId": "assisted-pistol",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "126e847a59fd414f35e3dce32f9c7d0a4cbf064414b4b06dcad8452c391204bb",
+      "bytes": 124057,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "novas3/02_pistol.png",
+      "local": "n3-pistol.png",
+      "inbox": "novas3/02_pistol.png",
+      "exerciseId": "pistol",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "52d172019fe57a63bb52a99c5f3cc663068e3fd0fbfb566cd4938b437665a957",
+      "bytes": 122939,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "novas3/03_hollow_rocks.png",
+      "local": "n3-hollow.png",
+      "inbox": "novas3/03_hollow_rocks.png",
+      "exerciseId": "hollow-rocks",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "3688be3be114ee58247b30a028f43c2ddae0473be3514c370d6ae616b27a6c41",
+      "bytes": 133265,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
+    },
+    {
+      "path": "novas3/mergulhoparalelas.png",
+      "local": "n3-dips.png",
+      "inbox": "novas3/mergulhoparalelas.png",
+      "exerciseId": "dips-parallettes",
+      "author": "gerada por IA (Gemini) a partir de prompt do usuário; uso declarado pelo usuário em 13/10/2026",
+      "license": "Geração por IA a pedido do usuário (uso declarado)",
+      "licenseUrl": "",
+      "verifiedAt": "2026-10-13",
+      "attribution": "Imagem gerada por IA (Gemini) a pedido do usuário (declarada em 13/10/2026)",
+      "sha256": "ddc36902128127e9e45e468f96c81e6a7c3abcf2e93d6439788982a32ce88845",
+      "bytes": 95265,
+      "approved": true,
+      "reason": "midia-ia-usuario-verificada"
     }
   ]
 }
